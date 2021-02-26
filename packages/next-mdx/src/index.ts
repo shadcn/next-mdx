@@ -1,0 +1,2 @@
+// boop
+export function getMdxContent() {}
