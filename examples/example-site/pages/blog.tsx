@@ -21,7 +21,8 @@ export default function IndexPage({ pages }: IndexPageProps) {
 }
 
 export async function getStaticProps() {
-  const pages = await getMdxContent("./content/pages", {
+  const pages = await getMdxContent("./content/blog", {
+    basePath: "/blog",
     components: mdxComponents,
   })
   return {

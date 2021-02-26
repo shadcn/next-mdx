@@ -5,28 +5,38 @@
   "sideEffects": false,
   "source": "src/index.ts",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "prepare": "microbundle --no-compress",
-    "watch": "microbundle watch --no-compress",
+    "prepare": "yarn prepare:server && yarn prepare:client",
+    "prepare:server": "microbundle --no-compress --target node --format cjs",
+    "prepare:client": "microbundle --no-compress -i src/client.ts -o dist/client.js",
+    "watch": "yarn watch:server && yarn watch:client",
+    "watch:server": "microbundle watch --no-compress --target node --format cjs",
+    "watch:client": "microbundle watch --no-compress -i src/client.ts -o dist/client.js",
     "test": "jest"
   },
   "bugs": {
-    "url": "https://github.com/reflexjs/reflexjs/issues"
+    "url": "https://github.com/arshad/next-mdx/issues"
   },
-  "homepage": "https://github.com/reflexjs/reflexjs",
+  "homepage": "https://github.com/arshad/next-mdx",
   "repository": {
     "type": "git",
-    "url": "https://github.com/reflexjs/reflexjs.git",
-    "directory": "packages/next-mdx"
+    "url": "https://github.com/arshad/next-mdx.git"
   },
   "devDependencies": {
     "@types/node": "^14.14.7",
+    "next": "^10.0.7",
     "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.5",
+    "gray-matter": "^4.0.2",
+    "hasha": "^5.2.2",
+    "next-mdx-remote": "^2.1.3",
+    "node-cache": "^5.1.2"
   }
 }
