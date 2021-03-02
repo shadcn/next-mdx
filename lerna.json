@@ -1,6 +1,6 @@
 {
   "version": "independent",
-  "packages": ["packages/*", "starters/*", "e2e-tests/*", "examples/*"],
+  "packages": ["packages/*", "example"],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "loglevel": "success",

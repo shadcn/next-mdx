@@ -1,0 +1,16 @@
+{
+  "blog": {
+    "contentPath": "content/blog",
+    "basePath": "/blog",
+    "sortBy": "date",
+    "sortOrder": "desc"
+  },
+  "page": {
+    "contentPath": "content/pages",
+    "basePath": "/"
+  },
+  "author": {
+    "contentPath": "content/authors",
+    "basePath": "/authors"
+  }
+}

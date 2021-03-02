@@ -1,3 +1,5 @@
+import { Greet } from "./greet"
+
 export function Alert({ children }) {
   return (
     <button
@@ -15,4 +17,5 @@ export function Alert({ children }) {
 export const mdxComponents = {
   h2: (props) => <h2 style={{ color: "lightgreen" }} {...props} />,
   Alert,
+  Greet,
 }

@@ -1,35 +1,22 @@
-import path from "path"
-import glob from "fast-glob"
+import { getAllNodes, Node } from "./get-node"
 
-export interface MdxPath {
-  filepath: string
-  slug: string
+export interface MdxPath extends Node {
   params: {
     slug: string[]
   }
 }
 
-export interface GetMdxPathsOptions {}
+export async function getMdxPathsRaw(sourceName: string): Promise<MdxPath[]> {
+  const nodes = await getAllNodes(sourceName)
 
-export async function getMdxPathsRaw(contentPath: string): Promise<MdxPath[]> {
-  const files = glob.sync(`${contentPath}/**/*.{md,mdx}`)
-
-  if (!files.length) return []
+  if (!nodes.length) return []
 
   return await Promise.all<MdxPath>(
-    files.map(async (filepath) => {
-      let slug = filepath
-        .replace(contentPath, "")
-        .replace(/^\/+/, "")
-        .replace(new RegExp(path.extname(filepath) + "$"), "")
-
-      slug = slug === "index" ? "" : slug
-
+    nodes.map(async (node) => {
       return {
-        filepath,
-        slug,
+        ...node,
         params: {
-          slug: slug.split("/"),
+          slug: node.slug.split("/"),
         },
       }
     })
@@ -37,8 +24,8 @@ export async function getMdxPathsRaw(contentPath: string): Promise<MdxPath[]> {
 }
 
 export async function getMdxPaths(
-  contentPath: string
+  sourceName: string
 ): Promise<Pick<MdxPath, "params">[]> {
-  const paths = await getMdxPathsRaw(contentPath)
+  const paths = await getMdxPathsRaw(sourceName)
   return paths.map(({ params }) => ({ params }))
 }

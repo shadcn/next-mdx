@@ -7,7 +7,8 @@ export interface HydrateOptions {
 }
 
 // Wrap next-mdx-remote/hydrate for future expansion.
-export function hydrate(
+// @see https://github.com/hashicorp/next-mdx-remote/pull/39
+export function useHydrate(
   content: { mdx: MdxRemote.Source },
   options?: HydrateOptions
 ): React.ReactNode {

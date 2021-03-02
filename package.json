@@ -3,7 +3,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "examples/*"
+    "example"
   ],
   "scripts": {
     "test": "jest",

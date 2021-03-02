@@ -14,11 +14,16 @@
     "prepare": "yarn prepare:server && yarn prepare:client",
     "prepare:server": "microbundle --no-compress --target node --format cjs",
     "prepare:client": "microbundle --no-compress -i src/client.ts -o dist/client.js",
-    "watch": "yarn watch:server && yarn watch:client",
+    "watch": "concurrently \"yarn:watch:*\"",
     "watch:server": "microbundle watch --no-compress --target node --format cjs",
     "watch:client": "microbundle watch --no-compress -i src/client.ts -o dist/client.js",
     "test": "jest"
   },
+  "files": [
+    "dist",
+    "server.js",
+    "server.d.ts"
+  ],
   "bugs": {
     "url": "https://github.com/arshad/next-mdx/issues"
   },
@@ -29,10 +34,13 @@
   },
   "devDependencies": {
     "@types/node": "^14.14.7",
+    "concurrently": "^6.0.0",
     "next": "^10.0.7",
     "typescript": "^4.0.5"
   },
   "dependencies": {
+    "@mdx-js/react": "^1.6.22",
+    "@sindresorhus/slugify": "^1.1.0",
     "fast-glob": "^3.2.5",
     "gray-matter": "^4.0.2",
     "hasha": "^5.2.2",
