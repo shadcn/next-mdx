@@ -21,8 +21,7 @@ export async function getConfig(): Promise<Config> {
     // TODO: Figure out dynamic import.
     // Switch to next-mdx.config.js?
     const json = await fs.readFile(configPath, "utf-8")
-    const config = JSON.parse(json)
-    return config
+    return JSON.parse(json)
   } catch (error) {
     console.error(error)
   }
@@ -37,6 +36,6 @@ export async function getSourceConfig(source: string): Promise<SourceConfig> {
       ...config[source],
     }
   } catch (err) {
-    throw new Error(`${source} does not exist on ${DEFAULT_CONFIG_PATH}`)
+    console.error(`${source} does not exist on ${DEFAULT_CONFIG_PATH}`)
   }
 }

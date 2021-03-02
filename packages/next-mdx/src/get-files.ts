@@ -10,7 +10,7 @@ export interface MdxFile {
 
 export async function getFiles(sourceName: string): Promise<MdxFile[]> {
   const { contentPath, basePath } = await getSourceConfig(sourceName)
-  const files = glob.sync(`${contentPath}/**/*.{md,mdx}`)
+  const files = await glob(`${contentPath}/**/*.{md,mdx}`)
 
   if (!files.length) return []
 
