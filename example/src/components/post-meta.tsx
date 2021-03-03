@@ -7,7 +7,6 @@ export interface PostMetaProps {
 }
 
 export function PostMeta({ post, ...props }: PostMetaProps) {
-  console.log(post)
   return (
     <div
       display="flex"
