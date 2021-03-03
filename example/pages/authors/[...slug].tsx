@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout"
 import { mdxComponents } from "@/components/mdx-components"
 import { Posts } from "@/components/posts"
-import { getMdxNode, getMdxNodes, getMdxPaths } from "next-mdx/server"
+import { getMdxNode, getAllMdxNodes, getMdxPaths } from "next-mdx/server"
 
 export default function AuthorPage({ author, posts }) {
   return (
@@ -28,7 +28,7 @@ export async function getStaticProps(context) {
     }
   }
 
-  const posts = await getMdxNodes("blog", {
+  const posts = await getAllMdxNodes("blog", {
     components: mdxComponents,
     sortBy: "date",
   })

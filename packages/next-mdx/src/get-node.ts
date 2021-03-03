@@ -2,7 +2,7 @@ import { promises as fs } from "fs"
 import matter from "gray-matter"
 import hasha from "hasha"
 import { getConfig } from "./get-config"
-import { MdxCache } from "./get-cache"
+import { mdxCache } from "./get-cache"
 import { getFiles, MdxFile } from "./get-files"
 
 export interface NodeRelationships {
@@ -59,8 +59,8 @@ export async function getFileData(
   const raw = await fs.readFile(file.filepath, "utf-8")
   const hash = hasha(raw.toString())
 
-  const cachedContent = MdxCache.get<MdxFileData>(hash)
-  if (cachedContent && cachedContent.hash === hash) {
+  const cachedContent = mdxCache.get<MdxFileData>(hash)
+  if (cachedContent?.hash === hash) {
     return cachedContent
   }
 
@@ -91,7 +91,7 @@ export async function getFileData(
     relationships,
   }
 
-  MdxCache.set<MdxFileData>(hash, fileData)
+  mdxCache.set<MdxFileData>(hash, fileData)
 
   return fileData
 }

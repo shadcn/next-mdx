@@ -1,6 +1,6 @@
 import path from "path"
 import mock from "mock-fs"
-import { getNode, getAllNodes } from "next-mdx/server"
+import { getNode, getAllNodes } from "../src/get-node"
 
 beforeEach(function () {
   mock({

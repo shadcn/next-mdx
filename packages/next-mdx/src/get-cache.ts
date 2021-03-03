@@ -1,3 +1,3 @@
 import NodeCache from "node-cache"
 
-export const MdxCache = new NodeCache()
+export const mdxCache = new NodeCache()

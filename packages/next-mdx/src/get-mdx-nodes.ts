@@ -23,7 +23,7 @@ export interface MdxParams {
   }
 }
 
-export interface GetMdxNodesParams extends MdxParams {
+export interface getAllMdxNodesParams extends MdxParams {
   sortBy?: string
   sortOrder?: "asc" | "desc"
 }
@@ -47,9 +47,9 @@ export async function getMdxNode(
   }
 }
 
-export async function getMdxNodes(
+export async function getAllMdxNodes(
   sourceName: string,
-  params?: GetMdxNodesParams
+  params?: getAllMdxNodesParams
 ) {
   const { sortBy, sortOrder } = await getSourceConfig(sourceName)
 

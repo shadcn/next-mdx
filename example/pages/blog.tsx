@@ -1,4 +1,4 @@
-import { getMdxNodes } from "next-mdx/server"
+import { getAllMdxNodes } from "next-mdx/server"
 import { Layout } from "@/components/layout"
 import { mdxComponents } from "@/components/mdx-components"
 import { Posts } from "@/components/posts"
@@ -18,7 +18,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
 }
 
 export async function getStaticProps() {
-  const posts = await getMdxNodes("blog", {
+  const posts = await getAllMdxNodes("blog", {
     components: mdxComponents,
   })
 

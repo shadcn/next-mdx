@@ -37,6 +37,7 @@ export default function PostPage({ post }: PostPageProps) {
 }
 
 export async function getStaticPaths() {
+  console.info("------- static paths")
   return {
     paths: await getMdxPaths("blog"),
     fallback: false,

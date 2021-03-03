@@ -3,9 +3,9 @@
   "description": "A Next.js plugin for MDX content.",
   "version": "0.2.0",
   "sideEffects": false,
-  "source": "src/index.ts",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "source": "src/server.ts",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

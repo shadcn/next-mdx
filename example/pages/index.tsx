@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getMdxNodes, MdxNode } from "next-mdx/server"
+import { getAllMdxNodes, MdxNode } from "next-mdx/server"
 import { Layout } from "@/components/layout"
 import { mdxComponents } from "@/components/mdx-components"
 
@@ -29,7 +29,7 @@ export default function IndexPage({ pages }: IndexPageProps) {
 }
 
 export async function getStaticProps() {
-  const pages = await getMdxNodes("page", {
+  const pages = await getAllMdxNodes("page", {
     components: mdxComponents,
   })
 
