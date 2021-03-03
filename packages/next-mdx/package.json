@@ -22,7 +22,9 @@
   "files": [
     "dist",
     "server.js",
-    "server.d.ts"
+    "server.d.ts",
+    "client.js",
+    "client.d.ts"
   ],
   "bugs": {
     "url": "https://github.com/arshad/next-mdx/issues"
