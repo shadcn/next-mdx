@@ -1,30 +1,26 @@
-import Link from "next/link"
+import config from "@/config"
+import { Navbar } from "@/components/navbar"
 
-export function Layout({ children }) {
+interface LayoutProps {
+  children?: React.ReactNode
+}
+
+export function Layout({ children }: LayoutProps) {
   return (
-    <div
-      style={{
-        maxWidth: "800px",
-        margin: "0 auto",
-      }}
-    >
-      <nav
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-        }}
-      >
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/blog">
-          <a>Blog</a>
-        </Link>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
-      </nav>
+    <>
+      <Navbar />
       <main>{children}</main>
-    </div>
+      <footer py="12|18|20">
+        <div variant="container.sm">
+          <div borderTopWidth="1" display="flex" justifyContent="center" pt="6">
+            {config.site.copyright ? (
+              <p fontSize="sm" color="gray">
+                {config.site.copyright}
+              </p>
+            ) : null}
+          </div>
+        </div>
+      </footer>
+    </>
   )
 }

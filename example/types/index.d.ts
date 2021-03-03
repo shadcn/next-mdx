@@ -2,19 +2,33 @@ import { MdxNode } from "next-mdx/server"
 
 interface Author
   extends MdxNode<{
-    title: string
+    name: string
     bio?: string
   }> {}
 
-interface PostFields {
-  title: string
-  excerpt?: string
-  author?: string[]
-  tags?: string[]
-  date?: string
+interface Category
+  extends MdxNode<{
+    name: string
+  }> {}
+
+interface Post
+  extends MdxNode<{
+    title: string
+    excerpt?: string
+    image?: string
+    authors?: string[]
+    category?: string
+    date?: string
+    featured?: boolean
+  }> {
   relationships?: {
-    author: Author[]
+    authors: Author[]
+    category: Category
   }
 }
 
-interface Post extends MdxNode<PostFields> {}
+interface Page
+  extends MdxNode<{
+    title: string
+    excerpt?: string
+  }> {}

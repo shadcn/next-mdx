@@ -16,10 +16,12 @@ export default function PostPage({ page }: PageProps) {
   return (
     <Layout>
       <article>
-        <h1>{page.frontMatter.title}</h1>
-        {page.frontMatter.excerpt ? <p>{page.frontMatter.excerpt}</p> : null}
-        <hr />
-        {content}
+        <div variant="container">
+          <h1 variant="heading.h1">{page.frontMatter.title}</h1>
+          {page.frontMatter.excerpt ? <p>{page.frontMatter.excerpt}</p> : null}
+          <hr />
+          {content}
+        </div>
       </article>
     </Layout>
   )

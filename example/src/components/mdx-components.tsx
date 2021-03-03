@@ -1,21 +1,15 @@
-import { Greet } from "./greet"
-
-export function Alert({ children }) {
-  return (
-    <button
-      style={{
-        backgroundColor: "tomato",
-        padding: "10px",
-      }}
-      onClick={() => alert(children)}
-    >
-      {children}
-    </button>
-  )
-}
+import { ButtonLink } from "@/components/button-link"
 
 export const mdxComponents = {
   h2: (props) => <h2 style={{ color: "lightgreen" }} {...props} />,
-  Alert,
-  Greet,
+  a: (props) => (
+    <a color="primary" _hover={{ textDecoration: "underline" }} {...props} />
+  ),
+  hr: (props) => <hr {...props} />,
+  p: (props) => <p variant="text.paragraph" {...props} />,
+  ul: (props) => <ul variant="list.unordered" {...props} />,
+  ol: (props) => <ol variant="list.ordered" {...props} />,
+  strong: (props) => <strong fontWeight="semibold" {...props} />,
+  inlineCode: (props) => <code color="primary" fontSize="xl" {...props} />,
+  ButtonLink,
 }

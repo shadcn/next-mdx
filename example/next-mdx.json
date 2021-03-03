@@ -1,15 +1,19 @@
 {
-  "blog": {
-    "contentPath": "content/blog",
-    "basePath": "/blog",
-    "sortBy": "date",
-    "sortOrder": "desc"
-  },
   "page": {
     "contentPath": "content/pages",
     "basePath": "/"
   },
-  "author": {
+  "post": {
+    "contentPath": "content/posts",
+    "basePath": "/blog",
+    "sortBy": "date",
+    "sortOrder": "desc"
+  },
+  "category": {
+    "contentPath": "content/categories",
+    "basePath": "/blog/categories"
+  },
+  "authors": {
     "contentPath": "content/authors",
     "basePath": "/authors"
   }

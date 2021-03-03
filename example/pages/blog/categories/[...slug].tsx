@@ -1,21 +1,18 @@
 import { Layout } from "@/components/layout"
 import { PostTeaser } from "@/components/post-teaser"
 import { getAllMdxNodes, getMdxNode, getMdxPaths } from "next-mdx"
-import { Author, Post } from "types"
+import { Category, Post } from "types"
 
-export interface AuthorPageProps {
-  author: Author
+export interface CategoryPageProps {
+  category: Category
   posts?: Post[]
 }
 
-export default function AuthorPage({ author, posts }: AuthorPageProps) {
+export default function CategoryPage({ category, posts }: CategoryPageProps) {
   return (
     <Layout>
       <div variant="container" py="10|12">
-        <h1 variant="heading.h1">Posts by {author.frontMatter.name}</h1>
-        {author.frontMatter.bio && (
-          <p variant="text.lead">{author.frontMatter.bio}</p>
-        )}
+        <h1 variant="heading.h1">{category.frontMatter.name}</h1>
         {posts?.length ? (
           posts.map((post) => <PostTeaser key={post.slug} post={post} />)
         ) : (
@@ -28,15 +25,15 @@ export default function AuthorPage({ author, posts }: AuthorPageProps) {
 
 export async function getStaticPaths() {
   return {
-    paths: await getMdxPaths("authors"),
+    paths: await getMdxPaths("category"),
     fallback: false,
   }
 }
 
 export async function getStaticProps(context) {
-  const author = await getMdxNode("authors", context)
+  const category = await getMdxNode("category", context)
 
-  if (!author) {
+  if (!category) {
     return {
       notFound: true,
     }
@@ -46,9 +43,9 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      author,
-      posts: posts.filter((post) =>
-        post.relationships.authors.some(({ slug }) => slug === author.slug)
+      category,
+      posts: posts.filter(
+        (post) => post.relationships.category[0].slug === category.slug
       ),
     },
   }
