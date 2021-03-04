@@ -1,11 +1,11 @@
 # next-mdx
 
-A set of helper functions to for fetching and rendering local [MDX](https://github.com/mdx-js/mdx) files.
+next-mdx provides a set of helper functions for fetching and rendering local [MDX](https://github.com/mdx-js/mdx) files. It handles relational data, custom components and is fast.
 
 <p>
   <a href="https://github.com/arshad/next-mdx/actions/workflows/ci.yml"><img src="https://github.com/arshad/next-mdx/actions/workflows/ci.yml/badge.svg" alt="Test"></a>
-  <a href="https://github.com/reflexjs/reflex/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@arshad/gatsby-theme-phoenix.svg" alt="License"></a>
-  <a href="https://github.com/reflexjs/reflex/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" /></a>
+  <a href="https://github.com/arshad/next-mdx/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@arshad/gatsby-theme-phoenix.svg" alt="License"></a>
+  <a href="https://github.com/arshad/next-mdx/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" /></a>
   <a href="https://twitter.com/arshadcn"><img src="https://img.shields.io/badge/Follow-%40arshadcn-1da1f2" alt="Follow @arshadcn" /></a>
 </p>
 
@@ -17,10 +17,10 @@ A set of helper functions to for fetching and rendering local [MDX](https://gith
 - [Reference](#reference)
   - [getMdxPaths](#getmdxpaths)
   - [getMdxNode](#getmdxnode)
-  - [getMdxNodes](#getmdxnodes)
-  - [useHydrate](#useHydrate)
+  - [getAllMdxNodes](#getallmdxnodes)
+  - [useHydrate](#usehydrate)
 - [MDX Components](#mdx-components)
-- [Relational nodes](#relational-nodes)
+- [Relational Data](#relational-data)
 
 ## Demo
 
@@ -241,9 +241,9 @@ export async function getStaticProps(context) {
 }
 ```
 
-## Relational data
+## Relational Data
 
-When retrieving nodes with `getMdxNode` or `getMdxNodes`, `next-mdx` will automatically infer relational data from frontMatter keys.
+When retrieving nodes with `getMdxNode` or `getAllMdxNodes`, `next-mdx` will automatically infer relational data from frontMatter keys.
 
 ### Convention
 
