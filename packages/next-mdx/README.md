@@ -2,6 +2,8 @@
 
 next-mdx provides a set of helper functions for fetching and rendering local [MDX](https://github.com/mdx-js/mdx) files. It handles relational data, custom components and is fast.
 
+next-mdx is great for building mdx-powered landing pages, multi-user blogs, category pages..etc.
+
 <p>
   <a href="https://github.com/arshad/next-mdx/actions/workflows/ci.yml"><img src="https://github.com/arshad/next-mdx/actions/workflows/ci.yml/badge.svg" alt="Test"></a>
   <a href="https://github.com/arshad/next-mdx/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@arshad/gatsby-theme-phoenix.svg" alt="License"></a>
