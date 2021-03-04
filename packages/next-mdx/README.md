@@ -11,11 +11,11 @@
 </p>
 
 <p align="center">
-next-mdx provides a set of helper functions for fetching and rendering local [MDX](https://github.com/mdx-js/mdx) files. It handles relational data, supports custom components, TypeScript ready and is fast.
+  <strong>next-mdx</strong> provides a set of helper functions for fetching and rendering local MDX files. It handles <strong>relational data</strong>, supports <strong>custom components</strong>, <strong>TypeScript</strong> ready and is <strong>fast</strong>.
 </p>
 
 <p align="center">
-next-mdx is great for building mdx-powered landing pages, multi-user blogs, category pages..etc.
+<strong>next-mdx</strong> is great for building mdx-powered landing pages, multi-user blogs, category pages..etc.
 </p>
 
 ## Table of Contents
