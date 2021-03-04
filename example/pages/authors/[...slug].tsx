@@ -34,7 +34,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const author = await getMdxNode("authors", context)
+  const author = await getMdxNode<Author>("authors", context)
 
   if (!author) {
     return {
@@ -42,13 +42,13 @@ export async function getStaticProps(context) {
     }
   }
 
-  const posts = await getAllMdxNodes("post")
+  const posts = await getAllMdxNodes<Post>("post")
 
   return {
     props: {
       author,
       posts: posts.filter((post) =>
-        post.relationships.authors.some(({ slug }) => slug === author.slug)
+        post.relationships.author.some(({ slug }) => slug === author.slug)
       ),
     },
   }

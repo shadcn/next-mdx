@@ -26,7 +26,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllMdxNodes("post", {
+  const posts = await getAllMdxNodes<Post>("post", {
     components: mdxComponents,
   })
 

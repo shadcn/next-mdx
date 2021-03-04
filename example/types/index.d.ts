@@ -16,14 +16,14 @@ interface Post
     title: string
     excerpt?: string
     image?: string
-    authors?: string[]
+    author?: string[]
     category?: string
     date?: string
     featured?: boolean
   }> {
   relationships?: {
-    authors: Author[]
-    category: Category
+    author: Author[]
+    category: Category[]
   }
 }
 

@@ -3,11 +3,16 @@ import { MdxRemote } from "next-mdx-remote/types"
 import { GetStaticPropsContext } from "next"
 import { Pluggable, Compiler } from "unified"
 import { getAllNodes, getNode, Node } from "./get-node"
-import { getSourceConfig } from "./get-config"
+import { getConfig, getSourceConfig } from "./get-config"
 
-export interface MdxNode<T = Record<string, string | string[]>>
-  extends Node<T> {
+// TODO: Properly type node relationships with generics.
+export interface MdxNodeRelationships<T = MdxNode> {
+  [key: string]: T[]
+}
+
+export interface MdxNode<T = Record<string, unknown>> extends Node<T> {
   mdx: MdxRemote.Source
+  relationships?: MdxNodeRelationships
 }
 
 export interface MdxParams {
@@ -28,29 +33,33 @@ export interface getAllMdxNodesParams extends MdxParams {
   sortOrder?: "asc" | "desc"
 }
 
-export async function getMdxNode(
+export async function getMdxNode<T extends MdxNode>(
   sourceName: string,
-  context: GetStaticPropsContext<NodeJS.Dict<string[]>>,
+  context: string | GetStaticPropsContext<NodeJS.Dict<string[]>>,
   params?: MdxParams
-): Promise<MdxNode> {
-  if (!context.params?.slug) {
+): Promise<T> {
+  if (!context || (typeof context !== "string" && !context.params?.slug)) {
     new Error(`slug params missing from context`)
   }
 
-  const node = await getNode(sourceName, context.params.slug.join("/"))
+  const slug =
+    typeof context === "string" ? context : context.params.slug.join("/")
+
+  const node = await getNode(sourceName, slug)
 
   if (!node) return null
 
-  return {
+  return <T>{
     ...node,
-    mdx: await getNodeMdx(node, params),
+    mdx: await renderNodeMdx(node, params),
+    relationships: await getNodeRelationships(node),
   }
 }
 
-export async function getAllMdxNodes(
+export async function getAllMdxNodes<T extends MdxNode>(
   sourceName: string,
   params?: getAllMdxNodesParams
-) {
+): Promise<T[]> {
   const { sortBy, sortOrder } = await getSourceConfig(sourceName)
 
   params = {
@@ -66,12 +75,13 @@ export async function getAllMdxNodes(
   const mdxContent = await Promise.all<MdxNode>(
     nodes.map(async (node) => ({
       ...node,
-      mdx: await getNodeMdx(node, params),
+      mdx: await renderNodeMdx(node, params),
+      relationships: await getNodeRelationships(node),
     }))
   )
 
   const adjust = params.sortOrder === "desc" ? -1 : 1
-  return mdxContent.sort((a, b) => {
+  return <T[]>mdxContent.sort((a, b) => {
     if (a.frontMatter[params.sortBy] < b.frontMatter[params.sortBy]) {
       return -1 * adjust
     }
@@ -82,7 +92,7 @@ export async function getAllMdxNodes(
   })
 }
 
-export async function getNodeMdx(node: Node, params?: MdxParams) {
+async function renderNodeMdx(node: Node, params?: MdxParams) {
   return await renderToString(node.content, {
     ...params,
     scope: {
@@ -90,4 +100,24 @@ export async function getNodeMdx(node: Node, params?: MdxParams) {
       ...node.frontMatter,
     },
   })
+}
+
+async function getNodeRelationships(node: Node): Promise<MdxNodeRelationships> {
+  const relationships: MdxNodeRelationships = {}
+  const config = await getConfig()
+
+  for (const key of Object.keys(node.frontMatter)) {
+    if (!config[key]) continue
+
+    const values = node.frontMatter[key]
+
+    if (!values) continue
+
+    const valueAsArray: string[] = Array.isArray(values) ? values : [values]
+    relationships[key] = await Promise.all(
+      valueAsArray.map(async (value) => await getMdxNode(key, value))
+    )
+  }
+
+  return relationships
 }

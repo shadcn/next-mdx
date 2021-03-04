@@ -1,22 +1,16 @@
 import { promises as fs } from "fs"
 import matter from "gray-matter"
 import hasha from "hasha"
-import { getConfig } from "./get-config"
 import { mdxCache } from "./get-cache"
 import { getFiles, MdxFile } from "./get-files"
 
-export interface NodeRelationships {
-  [key: string]: Node[]
-}
-
-export interface MdxFileData<T = Record<string, string | string[]>> {
+export interface MdxFileData<T = Record<string, unknown>> {
   hash: string
   frontMatter?: T
   content?: string
-  relationships?: NodeRelationships
 }
 
-export interface Node<T = Record<string, string | string[]>>
+export interface Node<T = Record<string, unknown>>
   extends MdxFile,
     MdxFileData<T> {}
 
@@ -48,14 +42,7 @@ export async function getAllNodes(sourceName: string): Promise<Node[]> {
   )
 }
 
-export interface GetFileDataParams {
-  withRelationships?: boolean
-}
-
-export async function getFileData(
-  file: MdxFile,
-  params: GetFileDataParams = { withRelationships: true }
-): Promise<MdxFileData> {
+export async function getFileData(file: MdxFile): Promise<MdxFileData> {
   const raw = await fs.readFile(file.filepath, "utf-8")
   const hash = hasha(raw.toString())
 
@@ -64,31 +51,12 @@ export async function getFileData(
     return cachedContent
   }
 
-  const config = await getConfig()
   const { content, data: frontMatter } = matter(raw)
-
-  const relationships: NodeRelationships = {}
-
-  if (params?.withRelationships) {
-    for (const key of Object.keys(frontMatter)) {
-      if (!config[key]) continue
-
-      const values = frontMatter[key]
-
-      if (!values) continue
-
-      const valueAsArray: string[] = Array.isArray(values) ? values : [values]
-      relationships[key] = await Promise.all(
-        valueAsArray.map(async (value) => await getNode(key, value))
-      )
-    }
-  }
 
   const fileData: MdxFileData = {
     hash,
     content,
     frontMatter,
-    relationships,
   }
 
   mdxCache.set<MdxFileData>(hash, fileData)

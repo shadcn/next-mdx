@@ -90,7 +90,7 @@ export default function IndexPage({ posts }: IndexPageProps) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllMdxNodes("post")
+  const posts = await getAllMdxNodes<Post>("post")
 
   return {
     props: {

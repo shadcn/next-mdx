@@ -13,7 +13,7 @@
     "contentPath": "content/categories",
     "basePath": "/blog/categories"
   },
-  "authors": {
+  "author": {
     "contentPath": "content/authors",
     "basePath": "/authors"
   }

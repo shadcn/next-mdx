@@ -31,7 +31,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const category = await getMdxNode("category", context)
+  const category = await getMdxNode<Category>("category", context)
 
   if (!category) {
     return {
@@ -39,13 +39,13 @@ export async function getStaticProps(context) {
     }
   }
 
-  const posts = await getAllMdxNodes("post")
+  const posts = await getAllMdxNodes<Post>("post")
 
   return {
     props: {
       category,
-      posts: posts.filter(
-        (post) => post.relationships.category[0].slug === category.slug
+      posts: posts.filter((post) =>
+        post.relationships.category.some(({ slug }) => slug === category.slug)
       ),
     },
   }

@@ -72,9 +72,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const post = await getMdxNode("post", context, {
-    components: mdxComponents,
-  })
+  const post = await getMdxNode<Post>("post", context)
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {
