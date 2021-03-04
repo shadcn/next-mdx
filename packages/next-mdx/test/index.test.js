@@ -44,9 +44,3 @@ test("gets a node using slug", async () => {
   expect(author.frontMatter.name).toBe("John Doe")
   expect(author.url).toBe("/authors/john-doe")
 })
-
-test("loads relationships for a node", async () => {
-  const node = await getNode("post", "post-one")
-  expect(node.relationships.author[0].frontMatter.name).toBe("John Doe")
-  expect(node.relationships.author[1].frontMatter.name).toBe("Jane Doe")
-})
