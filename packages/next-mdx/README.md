@@ -1,6 +1,6 @@
 # next-mdx
 
-next-mdx provides a set of helper functions for fetching and rendering local [MDX](https://github.com/mdx-js/mdx) files. It handles relational data, custom components and is fast.
+next-mdx provides a set of helper functions for fetching and rendering local [MDX](https://github.com/mdx-js/mdx) files. It handles relational data, supports custom components, TypeScript ready and is fast.
 
 next-mdx is great for building mdx-powered landing pages, multi-user blogs, category pages..etc.
 
@@ -14,6 +14,7 @@ next-mdx is great for building mdx-powered landing pages, multi-user blogs, cate
 ## Table of Contents
 
 - [Demo](#demo)
+- [Quick Start](#quick-start)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Reference](#reference)
@@ -26,7 +27,21 @@ next-mdx is great for building mdx-powered landing pages, multi-user blogs, cate
 
 ## Demo
 
-https://next-mdx-demo.vercel.app
+https://next-mdx-example.vercel.app
+
+## Quick Start
+
+Learn how next-mdx works by creating a sample project.
+
+1. Create a new blog using the simple-blog starter
+
+```
+npx create-next-app -e https://github.com/arshad/next-mdx-simple-blog
+```
+
+2. Open `next-mdx.json` to see the sample configuration.
+3. Open `pages/blog/[...slug].tsx` to see how MDX files are fetched and rendered.
+4. See `types/index.d.ts` for TypeScript.
 
 ## Installation
 
