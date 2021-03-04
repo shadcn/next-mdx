@@ -1,0 +1,14 @@
+{
+  "page": {
+    "contentPath": "content/pages",
+    "basePath": "/"
+  },
+  "post": {
+    "contentPath": "content/posts",
+    "basePath": "/blog"
+  },
+  "category": {
+    "contentPath": "content/categories",
+    "basePath": "/categories"
+  }
+}
