@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/arshad/next-mdx/compare/next-mdx@0.2.2...next-mdx@0.2.3) (2021-03-04)
+
+**Note:** Version bump only for package next-mdx
+
+
+
+
+
 ## [0.2.2](https://github.com/arshad/next-mdx/compare/next-mdx@0.2.1...next-mdx@0.2.2) (2021-03-03)
 
 
