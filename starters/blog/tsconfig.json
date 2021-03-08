@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": "../simple-blog",
+    "paths": {
+      "@/components/*": ["../simple-blog/src/components/*"],
+      "@/utils/*": ["../simple-blog/src/utils/*"],
+      "@/config": ["../simple-blog/src/config.ts"]
+    }
+  },
+  "include": ["../simple-blog/next-env.d.ts", "../simple-blog/**/*.ts", "../simple-blog/**/*.tsx"],
+  "exclude": ["../simple-blog/node_modules"]
+}

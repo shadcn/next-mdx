@@ -4,7 +4,7 @@
   "workspaces": [
     "packages/*",
     "starters/*",
-    "example"
+    "examples/*"
   ],
   "scripts": {
     "test": "jest",
