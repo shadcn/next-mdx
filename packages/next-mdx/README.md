@@ -18,6 +18,10 @@
 <strong>next-mdx</strong> is great for building mdx-powered landing pages, multi-user blogs, category pages..etc.
 </p>
 
+## TLDR
+
+👉 Learn how to create a Next.js blog in 5 tweets: https://twitter.com/arshadcn/status/1367888421805383683
+
 ## Table of Contents
 
 - [Demo](#demo)
