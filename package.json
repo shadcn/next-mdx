@@ -11,6 +11,7 @@
     "format": "prettier --write \"**/*.js{,on}\"  \"**/*.mdx\"",
     "prepare": "lerna run prepare",
     "lint": "eslint --cache --ext .js,.jsx .",
+    "watch": "yarn workspace next-mdx watch",
     "sync:starters": "./scripts/sync.sh \"starters/*\"",
     "sync:examples": "./scripts/sync.sh \"examples/*\""
   },
