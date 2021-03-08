@@ -11,7 +11,8 @@
     "format": "prettier --write \"**/*.js{,on}\"  \"**/*.mdx\"",
     "prepare": "lerna run prepare",
     "lint": "eslint --cache --ext .js,.jsx .",
-    "sync:starters": "./scripts/sync.sh \"starters/*\""
+    "sync:starters": "./scripts/sync.sh \"starters/*\"",
+    "sync:examples": "./scripts/sync.sh \"examples/*\""
   },
   "husky": {
     "hooks": {
