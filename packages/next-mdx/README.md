@@ -1,19 +1,27 @@
-# next-mdx
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/124599/109961945-0c061b00-7d04-11eb-9c19-17f33430b59f.jpg" />
+  <h1>next-mdx</h1>
+</div>
 
-next-mdx provides a set of helper functions for fetching and rendering local [MDX](https://github.com/mdx-js/mdx) files. It handles relational data, custom components and is fast.
-
-next-mdx is great for building mdx-powered landing pages, multi-user blogs, category pages..etc.
-
-<p>
+<p align="center">
   <a href="https://github.com/arshad/next-mdx/actions/workflows/ci.yml"><img src="https://github.com/arshad/next-mdx/actions/workflows/ci.yml/badge.svg" alt="Test"></a>
   <a href="https://github.com/arshad/next-mdx/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@arshad/gatsby-theme-phoenix.svg" alt="License"></a>
   <a href="https://github.com/arshad/next-mdx/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" /></a>
   <a href="https://twitter.com/arshadcn"><img src="https://img.shields.io/badge/Follow-%40arshadcn-1da1f2" alt="Follow @arshadcn" /></a>
 </p>
 
+<p align="center">
+  <strong>next-mdx</strong> provides a set of helper functions for fetching and rendering local MDX files. It handles <strong>relational data</strong>, supports <strong>custom components</strong>, <strong>TypeScript</strong> ready and is <strong>fast</strong>.
+</p>
+
+<p align="center">
+<strong>next-mdx</strong> is great for building mdx-powered landing pages, multi-user blogs, category pages..etc.
+</p>
+
 ## Table of Contents
 
 - [Demo](#demo)
+- [Quick Start](#quick-start)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Reference](#reference)
@@ -26,7 +34,21 @@ next-mdx is great for building mdx-powered landing pages, multi-user blogs, cate
 
 ## Demo
 
-https://next-mdx-demo.vercel.app
+https://next-mdx-example.vercel.app
+
+## Quick Start
+
+Learn how next-mdx works by creating a sample project.
+
+1. Create a new blog using the simple-blog starter
+
+```
+npx create-next-app -e https://github.com/arshad/next-mdx-simple-blog
+```
+
+2. Open `next-mdx.json` to see the sample configuration.
+3. Open `pages/blog/[...slug].tsx` to see how MDX files are fetched and rendered.
+4. See `types/index.d.ts` for TypeScript.
 
 ## Installation
 
