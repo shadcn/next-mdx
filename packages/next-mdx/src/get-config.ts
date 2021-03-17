@@ -28,14 +28,15 @@ export async function getConfig(): Promise<Config> {
 }
 
 export async function getSourceConfig(source: string): Promise<SourceConfig> {
-  try {
-    const config = await getConfig()
-    return {
-      sortBy: "title",
-      sortOrder: "asc",
-      ...config[source],
-    }
-  } catch (err) {
-    console.error(`${source} does not exist on ${DEFAULT_CONFIG_PATH}`)
+  const config = await getConfig()
+
+  if (!config || !config[source]) {
+    throw new Error(`Type ${source} does not exist in ${DEFAULT_CONFIG_PATH}`)
+  }
+
+  return {
+    sortBy: "title",
+    sortOrder: "asc",
+    ...config[source],
   }
 }

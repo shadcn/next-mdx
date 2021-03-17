@@ -1,4 +1,4 @@
-import { getAllNodes, Node } from "./get-node"
+import { getAllNodes, Node } from "./get-nodes"
 
 export interface MdxPath extends Node {
   params: {

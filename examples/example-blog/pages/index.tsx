@@ -1,7 +1,7 @@
 import { Icon } from "reflexjs"
 import { Layout } from "@/components/layout"
 import { Post } from "types"
-import { getAllMdxNodes } from "next-mdx"
+import { getAllNodes } from "next-mdx"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -90,7 +90,7 @@ export default function IndexPage({ posts }: IndexPageProps) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllMdxNodes<Post>("post")
+  const posts = await getAllNodes<Post>("post")
 
   return {
     props: {

@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout"
 import { PostTeaser } from "@/components/post-teaser"
-import { getAllMdxNodes, getMdxNode, getMdxPaths } from "next-mdx"
+import { getAllNodes, getMdxNode, getMdxPaths } from "next-mdx"
 import { Author, Post } from "types"
 
 export interface AuthorPageProps {
@@ -28,13 +28,13 @@ export default function AuthorPage({ author, posts }: AuthorPageProps) {
 
 export async function getStaticPaths() {
   return {
-    paths: await getMdxPaths("authors"),
+    paths: await getMdxPaths("author"),
     fallback: false,
   }
 }
 
 export async function getStaticProps(context) {
-  const author = await getMdxNode<Author>("authors", context)
+  const author = await getMdxNode<Author>("author", context)
 
   if (!author) {
     return {
@@ -42,7 +42,7 @@ export async function getStaticProps(context) {
     }
   }
 
-  const posts = await getAllMdxNodes<Post>("post")
+  const posts = await getAllNodes<Post>("post")
 
   return {
     props: {

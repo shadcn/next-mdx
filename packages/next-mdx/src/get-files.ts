@@ -1,5 +1,6 @@
 import glob from "fast-glob"
 import path from "path"
+
 import { getSourceConfig } from "./get-config"
 
 export interface MdxFile {

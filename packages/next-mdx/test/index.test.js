@@ -1,6 +1,6 @@
 import path from "path"
 import mock from "mock-fs"
-import { getNode, getAllNodes } from "../src/get-node"
+import { getNode, getAllNodes } from "../src/get-nodes"
 
 beforeEach(function () {
   mock({
@@ -43,4 +43,17 @@ test("gets a node using slug", async () => {
   const author = await getNode("author", "john-doe")
   expect(author.frontMatter.name).toBe("John Doe")
   expect(author.url).toBe("/authors/john-doe")
+})
+
+test("node relationships are properly attached", async () => {
+  const post = await getNode("post", "post-one")
+  expect(post.relationships.author.length).toBe(2)
+  expect(post.relationships.author[0].frontMatter.name).toBe("John Doe")
+  expect(post.relationships.author[1].frontMatter.name).toBe("Jane Doe")
+})
+
+test("an error is thrown for an invalid source", async () => {
+  await expect(getAllNodes("foo")).rejects.toThrow(
+    "Type foo does not exist in next-mdx.json"
+  )
 })
