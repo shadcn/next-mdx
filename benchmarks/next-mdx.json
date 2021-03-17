@@ -1,0 +1,10 @@
+{
+  "post": {
+    "contentPath": "content/posts",
+    "basePath": "/"
+  },
+  "author": {
+    "contentPath": "content/authors",
+    "basePath": "/authors"
+  }
+}

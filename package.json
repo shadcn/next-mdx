@@ -4,7 +4,8 @@
   "workspaces": [
     "packages/*",
     "starters/*",
-    "examples/*"
+    "examples/*",
+    "benchmarks"
   ],
   "scripts": {
     "test": "jest",
@@ -12,6 +13,7 @@
     "prepare": "lerna run prepare",
     "lint": "eslint --cache --ext .js,.jsx .",
     "watch": "yarn workspace next-mdx watch",
+    "benchmark": "yarn workspace next-mdx-benchmarks benchmark",
     "sync:starters": "./scripts/sync.sh \"starters/*\"",
     "sync:examples": "./scripts/sync.sh \"examples/*\""
   },

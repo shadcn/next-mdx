@@ -1,0 +1,23 @@
+{
+  "name": "next-mdx-benchmarks",
+  "private": "true",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "benchmark": "NUM_POSTS=100 node ./scripts/setup && yarn build | gnomon",
+    "dev": "next dev",
+    "build": "next build",
+    "preview": "next build && next start",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^10.0.9",
+    "next-mdx": "^0.2.4",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "gnomon": "^1.5.0"
+  }
+}
