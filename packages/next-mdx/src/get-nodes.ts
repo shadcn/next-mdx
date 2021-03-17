@@ -59,10 +59,7 @@ export async function getMdxNode<T extends MdxNode>(
     new Error(`slug params missing from context`)
   }
 
-  const slug =
-    typeof context === "string" ? context : context.params.slug.join("/")
-
-  const node = await getNode(sourceName, slug)
+  const node = await getNode(sourceName, context)
 
   if (!node) return null
 
@@ -119,11 +116,14 @@ async function renderNodeMdx(node: Node, params?: MdxParams) {
 
 export async function getNode<T extends Node>(
   sourceName: string,
-  slug: string
+  context: string | GetStaticPropsContext<NodeJS.Dict<string[]>>
 ): Promise<T> {
   const files = await getFiles(sourceName)
 
   if (!files.length) return null
+
+  const slug =
+    typeof context === "string" ? context : context.params.slug.join("/")
 
   const [file] = files.filter((file) => file.slug === slug)
 
@@ -173,8 +173,11 @@ export async function getFileData(file: MdxFile): Promise<MdxFileData> {
 
   const cachedContent = mdxCache.get<MdxFileData>(hash)
   if (cachedContent?.hash === hash) {
+    // console.info(`HIT for ${file.slug}`)
     return cachedContent
   }
+
+  // console.info(`MISS for ${file.slug}`)
 
   const { content, data: frontMatter } = matter(raw)
 

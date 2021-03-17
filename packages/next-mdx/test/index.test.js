@@ -15,6 +15,11 @@ beforeEach(function () {
         path.resolve(__dirname, "__fixtures__/content/posts/post-two.mdx")
       ),
     },
+    "__fixtures__/content/posts/a/nested": {
+      "post.mdx": mock.load(
+        path.resolve(__dirname, "__fixtures__/content/posts/a/nested/post.mdx")
+      ),
+    },
     "__fixtures__/content/authors": {
       "jane-doe.mdx": mock.load(
         path.resolve(__dirname, "__fixtures__/content/authors/jane-doe.mdx")
@@ -32,7 +37,7 @@ afterEach(() => {
 
 test("gets all nodes for a source", async () => {
   const nodes = await getAllNodes("post")
-  expect(nodes.length).toBe(2)
+  expect(nodes.length).toBe(3)
 })
 
 test("gets a node using slug", async () => {
@@ -50,6 +55,25 @@ test("node relationships are properly attached", async () => {
   expect(post.relationships.author.length).toBe(2)
   expect(post.relationships.author[0].frontMatter.name).toBe("John Doe")
   expect(post.relationships.author[1].frontMatter.name).toBe("Jane Doe")
+})
+
+test("nested post", async () => {
+  const post = await getNode("post", "a/nested/post")
+  expect(post.frontMatter.title).toBe("A nested post")
+})
+
+test("node can be retrieved using both and context", async () => {
+  const postFromSlug = await getNode("post", "post-one")
+  const postFromContext = await getNode("post", {
+    params: { slug: ["post-one"] },
+  })
+  expect(postFromSlug.hash).toEqual(postFromContext.hash)
+
+  const nestedFromSlug = await getNode("post", "a/nested/post")
+  const nestedFromContext = await getNode("post", {
+    params: { slug: ["a", "nested", "post"] },
+  })
+  expect(nestedFromSlug.hash).toEqual(nestedFromContext.hash)
 })
 
 test("an error is thrown for an invalid source", async () => {
