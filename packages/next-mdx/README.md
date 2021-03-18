@@ -35,10 +35,13 @@
 - [Configuration](#configuration)
 - [Reference](#reference)
   - [getMdxPaths](#getmdxpaths)
+  - [getNode](#getnode)
+  - [getAllNodes](#getallnodes)
   - [getMdxNode](#getmdxnode)
   - [getAllMdxNodes](#getallmdxnodes)
   - [useHydrate](#usehydrate)
 - [MDX Components](#mdx-components)
+- [MDX Options](#mdx-options)
 - [Relational Data](#relational-data)
 
 ## Demo
@@ -330,6 +333,25 @@ export async function getStaticProps(context) {
     props: {
       post,
     },
+  }
+}
+```
+
+## MDX Options
+
+MDX options can be passed as `params` to both `getMdxNode(sourceName, context, params)` and `getAllMdxNodes(sourceName, params)` where `params` takes the shape of:
+
+```ts
+export interface MdxParams {
+  components?: MdxRemote.Components
+  scope?: Record<string, unknown>
+  provider?: MdxRemote.Provider
+  mdxOptions?: {
+    remarkPlugins?: Pluggable[]
+    rehypePlugins?: Pluggable[]
+    hastPlugins?: Pluggable[]
+    compilers?: Compiler[]
+    filepath?: string
   }
 }
 ```
