@@ -1,7 +1,8 @@
-import { Layout } from "@/components/layout"
-import { getAllMdxNodes, getMdxNode, getMdxPaths } from "next-mdx"
 import Link from "next/link"
+import { getAllNodes, getMdxPaths, getNode } from "next-mdx"
+
 import { Category, Post } from "types"
+import { Layout } from "@/components/layout"
 
 export interface CategoryPageProps {
   category: Category
@@ -39,7 +40,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const category = await getMdxNode<Category>("category", context)
+  const category = await getNode<Category>("category", context)
 
   if (!category) {
     return {
@@ -47,7 +48,7 @@ export async function getStaticProps(context) {
     }
   }
 
-  const posts = await getAllMdxNodes<Post>("post")
+  const posts = await getAllNodes<Post>("post")
 
   return {
     props: {

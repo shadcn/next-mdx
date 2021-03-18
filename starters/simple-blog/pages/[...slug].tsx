@@ -1,9 +1,10 @@
 import * as React from "react"
-import { Layout } from "@/components/layout"
-import { mdxComponents } from "@/components/mdx-components"
 import { getMdxNode, getMdxPaths } from "next-mdx/server"
 import { useHydrate } from "next-mdx/client"
+
 import { Page } from "types"
+import { Layout } from "@/components/layout"
+import { mdxComponents } from "@/components/mdx-components"
 
 export interface PageProps {
   page: Page
