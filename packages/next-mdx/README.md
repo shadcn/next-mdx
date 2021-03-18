@@ -22,7 +22,6 @@
   <img src="https://user-images.githubusercontent.com/124599/110736366-f2edf480-8244-11eb-9b43-f27f6f578f4c.jpg" alt="next-mdx-relational-data" />
 </div>
 
-
 ## TLDR
 
 👉 Learn how to create a Next.js blog in 5 tweets: https://twitter.com/arshadcn/status/1367888421805383683
@@ -83,13 +82,16 @@ Create a `next-mdx.json` file at the root of your project with the following:
   "category": {
     "contentPath": "content/categories",
     "basePath": "/blog/categories"
+  },
+  "author": {
+    "contentPath: "content/authors"
   }
 }
 ```
 
-1. `post` and `category` keys are unique IDs used as references for your MDX types.
+1. `post`, `category` and `author` keys are unique IDs used as references for your MDX types.
 2. `contentPath` (required) is where your MDX files are located.
-3. `basePath` (required) is the path used for generating URLs.
+3. `basePath` (optional) is the path used for generating URLs.
 4. `sortBy` (optional, defaults to `title`) is the name of the frontMatter field used for sorting.
 5. `sortOrder` (optional, defaults to `asc`) is the sorting order.
 
@@ -156,7 +158,6 @@ export async function getStaticProps(context) {
 }
 ```
 
-
 ### getAllNodes
 
 `getAllNodes(sourceName)` returns all `MdxNode` of the given type/source with frontMatter and relational data but **without** MDX data. This is also really fast and cached.
@@ -171,7 +172,7 @@ import { getAllNodes } from "next-mdx/server"
 export async function getStaticProps() {
   return {
     props: {
-      posts: await getAllNodes("post")
+      posts: await getAllNodes("post"),
     },
   }
 }

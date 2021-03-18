@@ -6,7 +6,7 @@ import { getSourceConfig } from "./get-config"
 export interface MdxFile {
   filepath: string
   slug: string
-  url: string
+  url?: string
 }
 
 export async function getFiles(sourceName: string): Promise<MdxFile[]> {
@@ -26,7 +26,7 @@ export async function getFiles(sourceName: string): Promise<MdxFile[]> {
     return {
       filepath,
       slug,
-      url: `${basePath.replace(/\/$/, "")}/${slug}`,
+      url: basePath ? `${basePath.replace(/\/$/, "")}/${slug}` : null,
     }
   })
 }

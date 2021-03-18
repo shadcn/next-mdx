@@ -4,7 +4,6 @@
     "basePath": "/blog"
   },
   "author": {
-    "contentPath": "__fixtures__/content/authors",
-    "basePath": "/authors"
+    "contentPath": "__fixtures__/content/authors"
   }
 }

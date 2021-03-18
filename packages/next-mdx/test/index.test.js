@@ -47,7 +47,13 @@ test("gets a node using slug", async () => {
 
   const author = await getNode("author", "john-doe")
   expect(author.frontMatter.name).toBe("John Doe")
-  expect(author.url).toBe("/authors/john-doe")
+  expect(author.url).toBe(null)
+})
+
+test("basePath is optional", async () => {
+  const author = await getNode("author", "john-doe")
+  expect(author.frontMatter.name).toBe("John Doe")
+  expect(author.url).toBe(null)
 })
 
 test("node relationships are properly attached", async () => {

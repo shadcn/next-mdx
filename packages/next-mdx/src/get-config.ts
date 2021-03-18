@@ -5,7 +5,7 @@ const DEFAULT_CONFIG_PATH = "next-mdx.json"
 
 export interface SourceConfig {
   contentPath: string
-  basePath: string
+  basePath?: string
   sortBy?: string
   sortOrder?: "asc" | "desc"
 }
