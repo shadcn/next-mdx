@@ -11,11 +11,11 @@
 </p>
 
 <p align="center">
-  <strong>next-mdx</strong> provides a set of helper functions for fetching and rendering local MDX files. It handles <strong>relational data</strong>, supports <strong>custom components</strong>, <strong>TypeScript</strong> ready and is <strong>fast</strong>.
+  <strong>next-mdx</strong> provides a set of helper functions for fetching and rendering local MDX files. It handles <strong>relational data</strong>, supports <strong>custom components</strong>, <strong>TypeScript</strong> ready and is <strong>really fast</strong>.
 </p>
 
 <p align="center">
-<strong>next-mdx</strong> is great for building mdx-powered landing pages, multi-user blogs, category pages..etc.
+<strong>next-mdx</strong> is great for building mdx-powered pages, multi-user blogs, category pages..etc.
 </p>
 
 <div align="center">
@@ -92,7 +92,14 @@ Create a `next-mdx.json` file at the root of your project with the following:
 
 ## Reference
 
-`next-mdx` exposes four main helper functions:
+`next-mdx` exposes 6 main helper functions:
+
+- `getMdxPaths(sourceName: string)`
+- `getNode(sourceName, context)`
+- `getAllNodes(sourceName)`
+- `getMdxNode(sourceName, context, params)`
+- `getAllMdxNodes(sourceName, params)`
+- `useHydrate(node, params)`
 
 ### getMdxPaths
 
@@ -114,12 +121,65 @@ export async function getStaticPaths() {
 }
 ```
 
+### getNode
+
+`getNode(sourceName, context)` returns an `MDXNode` with frontMatter and relational data but **without** MDX data. This is really fast and cached.
+
+Use this instead of `getMdxNode` if you are not rendering MDX content on a page.
+
+- `sourceName` is the unique ID defined in `next-mdx.json`
+- `context` is the context passed to `getStaticProps` or the slug as a string.
+
+#### Example
+
+```js
+// pages/blog/[...slug].js
+import { getNode } from "next-mdx/server"
+
+export async function getStaticProps(context) {
+  const post = await getNode("post", context)
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+```
+
+
+### getAllNodes
+
+`getAllNodes(sourceName)` returns all `MdxNode` of the given type/source with frontMatter and relational data but **without** MDX data. This is also really fast and cached.
+
+- `sourceName` is the unique ID defined in `next-mdx.json`
+
+#### Example
+
+```js
+import { getAllNodes } from "next-mdx/server"
+
+export async function getStaticProps() {
+  return {
+    props: {
+      posts: await getAllNodes("post")
+    },
+  }
+}
+```
+
 ### getMdxNode
 
 `getMdxNode(sourceName, context, params)` returns an `MDXNode`.
 
 - `sourceName` is the unique ID defined in `next-mdx.json`
-- `context` is the context passed to `getStaticProps`.
+- `context` is the context passed to `getStaticProps` or the slug as a string.
 - `params`:
 
 ```js
@@ -231,7 +291,7 @@ export default function PostPage({ post }) {
 
 ## MDX Components
 
-To use components inside MDX files, you need to pass the components to both `getMdxNode/getMdxNodes` and `useHydrate`.
+To use components inside MDX files, you need to pass the components to both `getMdxNode/getAllMdxNodes` and `useHydrate`.
 
 ### Example
 
