@@ -1,7 +1,7 @@
 {
   "name": "next-mdx",
   "description": "A Next.js plugin for MDX content.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "sideEffects": false,
   "source": "src/server.ts",
   "main": "dist/server.js",
