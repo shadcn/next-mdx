@@ -80,11 +80,7 @@ Create a `next-mdx.json` file at the root of your project with the following:
     "sortOrder": "desc"
   },
   "category": {
-    "contentPath": "content/categories",
-    "basePath": "/blog/categories"
-  },
-  "author": {
-    "contentPath: "content/authors"
+    "contentPath": "content/categories"
   }
 }
 ```
