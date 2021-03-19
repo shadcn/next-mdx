@@ -11,6 +11,12 @@ An example blog built using [next-mdx](https://github.com/arshad/next-mdx) with:
 
 https://next-mdx-example-blog.vercel.app
 
+## Deploy to Vercel
+
+Deploy this example to Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Farshad%2Fnext-mdx%2Ftree%2Fmaster%2Fexamples%2Fexample-blog&project-name=next-mdx-example-blog&repo-name=next-mdx-example-blog)
+
 ## Download this example
 
 Download this example:
