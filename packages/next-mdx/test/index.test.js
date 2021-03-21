@@ -44,6 +44,8 @@ test("gets a node using slug", async () => {
   const post = await getNode("post", "post-one")
   expect(post.frontMatter.title).toBe("Post One")
   expect(post.url).toBe("/blog/post-one")
+  expect(post.frontMatter.word_count).toBe(71)
+  expect(post.frontMatter.reading_time.text).toBe("1 min read")
 
   const author = await getNode("author", "john-doe")
   expect(author.frontMatter.name).toBe("John Doe")
