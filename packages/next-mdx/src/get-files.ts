@@ -21,7 +21,7 @@ export async function getFiles(sourceName: string): Promise<MdxFile[]> {
       .replace(/^\/+/, "")
       .replace(new RegExp(path.extname(filepath) + "$"), "")
 
-    slug = slug === "index" ? "" : slug
+    slug = slug.replace(/\/?index$/, "")
 
     return {
       filepath,

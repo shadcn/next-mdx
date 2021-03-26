@@ -28,6 +28,14 @@ beforeEach(function () {
         path.resolve(__dirname, "__fixtures__/content/authors/john-doe.mdx")
       ),
     },
+    "__fixtures__/content/pages": {
+      "index.mdx": mock.load(
+        path.resolve(__dirname, "__fixtures__/content/pages/index.mdx")
+      ),
+      "about.mdx": mock.load(
+        path.resolve(__dirname, "__fixtures__/content/pages/about.mdx")
+      ),
+    },
   })
 })
 
@@ -86,4 +94,10 @@ test("an error is thrown for an invalid source", async () => {
   await expect(getAllNodes("foo")).rejects.toThrow(
     "Type foo does not exist in next-mdx.json"
   )
+})
+
+test("index.mdx should resolved to empty url for optional catch-all", async () => {
+  const page = await getNode("page", "")
+  expect(page.frontMatter.title).toBe("Home")
+  expect(page.url).toBe("/")
 })

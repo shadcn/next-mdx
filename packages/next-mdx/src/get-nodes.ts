@@ -123,7 +123,11 @@ export async function getNode<T extends Node>(
   if (!files.length) return null
 
   const slug =
-    typeof context === "string" ? context : context.params.slug.join("/")
+    typeof context === "string"
+      ? context
+      : context.params.slug
+      ? context.params.slug.join("/")
+      : ""
 
   const [file] = files.filter((file) => file.slug === slug)
 
