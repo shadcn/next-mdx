@@ -73,35 +73,19 @@ export async function getAllMdxNodes<T extends MdxNode>(
   sourceName: string,
   params?: getAllMdxNodesParams
 ): Promise<T[]> {
-  const { sortBy, sortOrder } = await getSourceConfig(sourceName)
-
-  params = {
-    sortBy,
-    sortOrder,
-    ...params,
-  }
-
   const nodes = await getAllNodes(sourceName)
 
   if (!nodes.length) return []
 
-  const mdxContent = await Promise.all<MdxNode>(
-    nodes.map(async (node) => ({
-      ...node,
-      mdx: await renderNodeMdx(node, params),
-    }))
+  return Promise.all<T>(
+    nodes.map(
+      async (node) =>
+        <T>{
+          ...node,
+          mdx: await renderNodeMdx(node, params),
+        }
+    )
   )
-
-  const adjust = params.sortOrder === "desc" ? -1 : 1
-  return <T[]>mdxContent.sort((a, b) => {
-    if (a.frontMatter[params.sortBy] < b.frontMatter[params.sortBy]) {
-      return -1 * adjust
-    }
-    if (a.frontMatter[params.sortBy] > b.frontMatter[params.sortBy]) {
-      return 1 * adjust
-    }
-    return 0
-  })
 }
 
 async function renderNodeMdx(node: Node, params?: MdxParams) {
@@ -144,11 +128,13 @@ export async function getNode<T extends Node>(
 export async function getAllNodes<T extends Node>(
   sourceName: string
 ): Promise<T[]> {
+  const { sortBy, sortOrder } = await getSourceConfig(sourceName)
+
   const files = await getFiles(sourceName)
 
   if (!files.length) return []
 
-  return Promise.all<T>(
+  const nodes = await Promise.all<T>(
     files.map(async (file) => {
       const node = await buildNodeFromFile(file)
 
@@ -158,6 +144,17 @@ export async function getAllNodes<T extends Node>(
       }
     })
   )
+
+  const adjust = sortOrder === "desc" ? -1 : 1
+  return <T[]>nodes.sort((a, b) => {
+    if (a.frontMatter[sortBy] < b.frontMatter[sortBy]) {
+      return -1 * adjust
+    }
+    if (a.frontMatter[sortBy] > b.frontMatter[sortBy]) {
+      return 1 * adjust
+    }
+    return 0
+  })
 }
 
 async function buildNodeFromFile<T extends Node>(file: MdxFile): Promise<T> {
