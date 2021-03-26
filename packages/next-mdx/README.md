@@ -49,16 +49,11 @@ https://next-mdx-example.vercel.app
 
 ## Quick Start
 
-Learn how next-mdx works by creating a sample project.
+Learn how next-mdx works by looking at examples.
 
-1. Create a new blog using the simple-blog starter
-
-```
-npx create-next-app -e https://github.com/arshad/next-mdx-simple-blog
-```
-
+1. Go to [example-page](examples/example-page)
 2. Open `next-mdx.json` to see the sample configuration.
-3. Open `pages/blog/[...slug].tsx` to see how MDX files are fetched and rendered.
+3. Open `pages/[[...slug]].tsx` to see how MDX files are fetched and rendered.
 4. See `types/index.d.ts` for TypeScript.
 
 ## Installation
