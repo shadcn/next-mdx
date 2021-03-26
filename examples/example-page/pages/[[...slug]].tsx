@@ -1,7 +1,8 @@
 import * as React from "react"
 import Link from "next/link"
-import { getMdxNode, getMdxPaths, MdxNode } from "next-mdx/server"
+import { getMdxNode, getMdxPaths } from "next-mdx/server"
 import { useHydrate } from "next-mdx/client"
+import { Page } from "types"
 
 const mdxComponents = {
   p: (props) => (
@@ -16,7 +17,7 @@ const mdxComponents = {
 }
 
 export interface PageProps {
-  page: MdxNode
+  page: Page
 }
 
 export default function PostPage({ page }: PageProps) {
