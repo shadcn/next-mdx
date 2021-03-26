@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import matter from "gray-matter"
 import hasha from "hasha"
+import readingTime from "reading-time"
 import { GetStaticPropsContext } from "next"
 import { Pluggable, Compiler } from "unified"
 import renderToString from "next-mdx-remote/render-to-string"
@@ -181,6 +182,11 @@ export async function getFileData(file: MdxFile): Promise<MdxFileData> {
   // console.info(`MISS for ${file.slug}`)
 
   const { content, data: frontMatter } = matter(raw)
+
+  const word_count = content.split(/\s+/gu).length
+  const reading_time = readingTime(content)
+  frontMatter.reading_time = reading_time
+  frontMatter.word_count = word_count
 
   const fileData: MdxFileData = {
     hash,
