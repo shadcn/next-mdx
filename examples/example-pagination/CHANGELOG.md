@@ -6,6 +6,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # 0.1.0 (2021-03-26)
 
 
+### Features
+
+* add example-pagination ([bcf381d](https://github.com/arshad/next-mdx/commit/bcf381d93cf4e9f85d403366cdf35e4914b9e8fc))
+
+
+
+
+
+# 0.1.0 (2021-03-26)
+
+
 ### Bug Fixes
 
 * **example-page:** add types ([121a59c](https://github.com/arshad/next-mdx/commit/121a59cb92b1cccdcc53b36c2e953470c479d13f))

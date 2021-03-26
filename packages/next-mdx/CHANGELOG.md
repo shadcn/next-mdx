@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/arshad/next-mdx/compare/next-mdx@0.5.0...next-mdx@0.5.1) (2021-03-26)
+
+
+### Bug Fixes
+
+* **next-mdx:** sort getAllNodes ([e2df46b](https://github.com/arshad/next-mdx/commit/e2df46b20db13b2ee5e132316b88138ebb961f10))
+
+
+
+
+
 # [0.5.0](https://github.com/arshad/next-mdx/compare/next-mdx@0.4.0...next-mdx@0.5.0) (2021-03-26)
 
 
