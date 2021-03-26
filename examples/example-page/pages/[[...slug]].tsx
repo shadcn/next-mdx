@@ -1,13 +1,22 @@
 import * as React from "react"
-import { getMdxNode, getMdxPaths } from "next-mdx/server"
+import Link from "next/link"
+import { getMdxNode, getMdxPaths, MdxNode } from "next-mdx/server"
 import { useHydrate } from "next-mdx/client"
 
-import { Page } from "types"
-import { Layout } from "@/components/layout"
-import { mdxComponents } from "@/components/mdx-components"
+const mdxComponents = {
+  p: (props) => (
+    <p
+      {...props}
+      style={{
+        margin: "1rem 0",
+      }}
+    />
+  ),
+  Link,
+}
 
 export interface PageProps {
-  page: Page
+  page: MdxNode
 }
 
 export default function PostPage({ page }: PageProps) {
@@ -16,16 +25,12 @@ export default function PostPage({ page }: PageProps) {
   })
 
   return (
-    <Layout>
-      <article>
-        <div>
-          <h1>{page.frontMatter.title}</h1>
-          {page.frontMatter.excerpt ? <p>{page.frontMatter.excerpt}</p> : null}
-          <hr />
-          {content}
-        </div>
-      </article>
-    </Layout>
+    <article>
+      <h1>{page.frontMatter.title}</h1>
+      {page.frontMatter.excerpt ? <p>{page.frontMatter.excerpt}</p> : null}
+      <hr />
+      {content}
+    </article>
   )
 }
 

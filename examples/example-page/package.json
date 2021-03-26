@@ -1,15 +1,15 @@
 {
-  "name": "simple-blog",
-  "version": "0.2.1",
+  "name": "example-page",
+  "version": "0.0.1",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3030",
     "build": "next build",
     "preview": "next build && next start"
   },
   "dependencies": {
-    "next": "^10.0.1",
+    "next": "^10.0.9",
     "next-mdx": "^0.4.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"

@@ -8,6 +8,7 @@
     "benchmarks"
   ],
   "scripts": {
+    "dev": "lerna run dev --parallel",
     "test": "jest",
     "format": "prettier --write \"**/*.js{,on}\"  \"**/*.mdx\"",
     "prepare": "lerna run prepare",
