@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/arshad/next-mdx/compare/next-mdx@0.4.0...next-mdx@0.5.0) (2021-03-26)
+
+
+### Features
+
+* **next-mdx:** add support for optional catch-all routes ([fdce04e](https://github.com/arshad/next-mdx/commit/fdce04eaa3dbbbca2e1fe36c9538ec23a6b3c693))
+
+
+
+
+
 # [0.4.0](https://github.com/arshad/next-mdx/compare/next-mdx@0.3.0...next-mdx@0.4.0) (2021-03-18)
 
 

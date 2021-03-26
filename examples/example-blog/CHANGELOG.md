@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/arshad/next-mdx/compare/example-blog@0.4.1...example-blog@0.5.0) (2021-03-26)
+
+
+### Features
+
+* **example-page:** replace simple-blog starter with an example ([90a0001](https://github.com/arshad/next-mdx/commit/90a0001175f3c10ea09155f28916023c5d2c7524))
+
+
+
+
+
 ## [0.4.1](https://github.com/arshad/next-mdx/compare/example-blog@0.4.0...example-blog@0.4.1) (2021-03-18)
 
 **Note:** Version bump only for package example-blog
