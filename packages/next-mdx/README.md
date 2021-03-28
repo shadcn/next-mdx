@@ -284,6 +284,10 @@ export default function PostPage({ post }) {
 }
 ```
 
+## getAllNodes vs getAllMdxNodes
+
+Use `getAllNodes` when you need nodes **without** the MDX content. It is backed by a cache and is really fast. This is handy when you need a list of nodes (example post teasers) and you're not using the MDX content.
+
 ## MDX Components
 
 To use components inside MDX files, you need to pass the components to both `getMdxNode/getAllMdxNodes` and `useHydrate`.
