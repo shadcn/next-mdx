@@ -39,6 +39,7 @@
   - [getMdxNode](#getmdxnode)
   - [getAllMdxNodes](#getallmdxnodes)
   - [useHydrate](#usehydrate)
+  - [getAllNodes vs getAllMdxNodes](#getallnodes-vs-getallmdxnodes)
 - [MDX Components](#mdx-components)
 - [MDX Options](#mdx-options)
 - [Relational Data](#relational-data)
