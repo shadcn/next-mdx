@@ -43,6 +43,7 @@
 - [MDX Components](#mdx-components)
 - [MDX Options](#mdx-options)
 - [Relational Data](#relational-data)
+- [Plugins](#plugins)
 
 ## Demo
 
@@ -393,6 +394,10 @@ const post = getMdxNode("post", context)
 
 // post.relationships.category
 ```
+
+## Plugins
+
+- [next-mdx-toc](/packages/next-mdx-toc): Add table of contents to MDX pages.
 
 ## License
 
