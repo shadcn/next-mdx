@@ -39,6 +39,7 @@
   - [getMdxNode](#getmdxnode)
   - [getAllMdxNodes](#getallmdxnodes)
   - [useHydrate](#usehydrate)
+  - [getAllNodes vs getAllMdxNodes](#getallnodes-vs-getallmdxnodes)
 - [MDX Components](#mdx-components)
 - [MDX Options](#mdx-options)
 - [Relational Data](#relational-data)
@@ -283,6 +284,10 @@ export default function PostPage({ post }) {
   )
 }
 ```
+
+## getAllNodes vs getAllMdxNodes
+
+Use `getAllNodes` when you need nodes **without** the MDX content. It is backed by a cache and is really fast. This is handy when you need a list of nodes (example post teasers) and you're not using the MDX content.
 
 ## MDX Components
 
