@@ -24,7 +24,8 @@
 
 ## TLDR
 
-👉 Learn how to create a Next.js blog in 5 tweets: https://twitter.com/arshadcn/status/1367888421805383683
+- 👉 Learn how to create a Next.js blog in 5 tweets: https://twitter.com/arshadcn/status/1367888421805383683
+- 🚀 What about build times? Is this fast? Yes: https://twitter.com/arshadcn/status/1372275646840279040
 
 ## Table of Contents
 
