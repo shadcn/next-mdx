@@ -21,27 +21,6 @@ Images are always rendered in such a way as to avoid Cumulative Layout Shift, a 
 
 To add an image to your application, import the `next/image` component:
 
-```jsx
-import Image from "next/image"
-
-function Home() {
-  return (
-    <>
-      <h1>My Homepage</h1>
-      <Image
-        src="/me.png"
-        alt="Picture of the author"
-        width={500}
-        height={500}
-      />
-      <p>Welcome to my homepage!</p>
-    </>
-  )
-}
-
-export default Home
-```
-
 ## Configuration
 
 In addition to using properties available to the next/image component, you can optionally configure Image Optimization for more advanced use cases via next.config.js.
@@ -53,15 +32,6 @@ To enable Image Optimization for images hosted on an external website, use an ab
 ### loader
 
 If you want to use a cloud provider to optimize images instead of using the Next.js' built-in Image Optimization, you can configure the loader and path prefix. This allows you to use relative urls for the Image src and automatically generate the correct absolute url for your provider.
-
-```js
-module.exports = {
-  images: {
-    loader: "imgix",
-    path: "https://example.com/myaccount/",
-  },
-}
-```
 
 ## Caching
 
