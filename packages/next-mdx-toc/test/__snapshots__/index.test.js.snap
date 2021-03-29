@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns toc tree from node 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "items": Array [
+        Object {
+          "items": Array [
+            Object {
+              "title": "Heading 4",
+              "url": "#heading-4",
+            },
+          ],
+          "title": "Heading 3",
+          "url": "#heading-3",
+        },
+      ],
+      "title": "Heading 2",
+      "url": "#heading-2",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "items": Array [
+            Object {
+              "title": "Heading 4",
+              "url": "#heading-4-1",
+            },
+            Object {
+              "title": "Heading 4",
+              "url": "#heading-4-2",
+            },
+          ],
+          "title": "Another heading 3",
+          "url": "#another-heading-3",
+        },
+      ],
+      "title": "Another heading 2",
+      "url": "#another-heading-2",
+    },
+  ],
+}
+`;
