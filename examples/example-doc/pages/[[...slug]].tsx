@@ -28,58 +28,24 @@ export default function Postdoc({ doc, tableOfContents }: DocProps) {
   })
 
   return (
-    <div className="container">
-      <article>
-        <h1>{doc.frontMatter.title}</h1>
-        {doc.frontMatter.excerpt ? <p>{doc.frontMatter.excerpt}</p> : null}
-        <hr />
-        {content}
-      </article>
-      <aside>
-        <h4>On this page:</h4>
-        <Toc tree={tableOfContents} />
-      </aside>
-      <style jsx global>{`
-        body {
-          margin: 0;
-          padding: 0;
-          font-size: 18px;
-          font-weight: 400;
-          line-height: 1.8;
-          color: #333;
-          font-family: sans-serif;
-        }
-        h1 {
-          font-weight: 700;
-        }
-        p {
-          margin-bottom: 10px;
-        }
-        pre {
-          background-color: black;
-          color: white;
-          padding: 20px;
-        }
-        a {
-          text-decoration: none;
-          color: blue;
-        }
-      `}</style>
-      <style jsx>{`
-        .container {
-          max-width: 1000px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 300px;
-          align-items: flex-start;
-          gap: 80px;
-        }
-        aside {
-          position: sticky;
-          top: 0;
-        }
-      `}</style>
-    </div>
+    <>
+      <header>
+        👉 Demo for table of contents build with{" "}
+        <a href="https://github.com/arshad/next-mdx">next-mdx</a>.
+      </header>
+      <div className="container">
+        <aside>
+          <h4>On this page:</h4>
+          <Toc tree={tableOfContents} />
+        </aside>
+        <article>
+          <h1>{doc.frontMatter.title}</h1>
+          {doc.frontMatter.excerpt ? <p>{doc.frontMatter.excerpt}</p> : null}
+          <hr />
+          {content}
+        </article>
+      </div>
+    </>
   )
 }
 
