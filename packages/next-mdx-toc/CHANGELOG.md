@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/arshad/next-mdx/compare/next-mdx-toc@0.1.0...next-mdx-toc@0.1.1) (2021-03-29)
+
+
+### Bug Fixes
+
+* **next-mdx-toc:** add next-mdx to dependencies ([d1a8e0a](https://github.com/arshad/next-mdx/commit/d1a8e0a0bf38b17bc392fca448b218ceba6bf273))
+
+
+
+
+
 # 0.1.0 (2021-03-29)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "next-mdx-toc",
   "description": "Add table of contents to MDX",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "sideEffects": false,
   "source": "src/index.ts",
   "main": "dist/index.js",

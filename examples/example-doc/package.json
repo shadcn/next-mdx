@@ -1,6 +1,6 @@
 {
   "name": "example-doc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "next": "^10.0.9",
     "next-mdx": "^0.6.0",
-    "next-mdx-toc": "^0.1.0",
+    "next-mdx-toc": "^0.1.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "remark-autolink-headings": "^6.0.1",
