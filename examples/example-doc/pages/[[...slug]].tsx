@@ -30,7 +30,7 @@ export default function Postdoc({ doc, tableOfContents }: DocProps) {
   return (
     <>
       <header>
-        👉 Demo for table of contents build with{" "}
+        👉 Demo for table of contents built with{" "}
         <a href="https://github.com/arshad/next-mdx">next-mdx</a>.
       </header>
       <div className="container">
