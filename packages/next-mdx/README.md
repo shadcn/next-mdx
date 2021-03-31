@@ -31,6 +31,7 @@
 
 - [Demo](#demo)
 - [Quick Start](#quick-start)
+- [Examples](#examples)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Reference](#reference)
@@ -58,6 +59,75 @@ Learn how next-mdx works by looking at examples.
 2. Open `next-mdx.json` to see the sample configuration.
 3. Open `pages/[[...slug]].tsx` to see how MDX files are fetched and rendered.
 4. See `types/index.d.ts` for TypeScript.
+
+## Examples
+
+Click to expand examples.
+
+<details>
+  <summary>next-mdx.json</summary>
+  
+  ```json
+  {
+    "post": {
+      "contentPath": "content/posts",
+      "basePath": "/blog",
+      "sortBy": "date",
+      "sortOrder": "desc"
+    },
+  }
+  ```
+</details>
+
+<details>
+  <summary>pages/posts/[...slug].jsx</summary>
+  
+  ```jsx
+  import { useHydrate } from "next-mdx/client"
+  import { getMdxNode, getMdxPaths } from "next-mdx/server"
+
+  export default function PostPage({ post }) {
+    const content = useHydrate(post)
+    
+    return (
+      <article>
+        <h1 variant="heading.title">{post.frontMatter.title}</h1>
+        {post.frontMatter.excerpt ? (
+          <p variant="text.lead" mt="4">
+            {post.frontMatter.excerpt}
+          </p>
+        ) : null}
+        <hr />
+        {content}
+      </article>
+    )
+  }
+
+  export async function getStaticPaths() {
+    return {
+      paths: await getMdxPaths("post"),
+      fallback: false,
+    }
+  }
+
+  export async function getStaticProps(context) {
+    const post = await getMdxNode("post", context)
+
+    if (!post) {
+      return {
+        notFound: true,
+      }
+    }
+
+    return {
+      props: {
+        post,
+      },
+    }
+  }
+  ```
+</details>
+
 
 ## Installation
 
