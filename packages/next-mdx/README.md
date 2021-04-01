@@ -46,6 +46,7 @@
 - [MDX Options](#mdx-options)
 - [Relational Data](#relational-data)
 - [Plugins](#plugins)
+- [TypeScript](#typescript)
 
 ## Demo
 
@@ -469,6 +470,44 @@ const post = getMdxNode("post", context)
 ## Plugins
 
 - [next-mdx-toc](/packages/next-mdx-toc): Add table of contents to MDX pages.
+
+## TypeScript
+
+Define your node types as follows:
+
+```ts
+interface Post extends MdxNode<FrontMatterFields> {}
+```
+
+### Example
+
+```ts
+import { MdxNode } from "next-mdx/server"
+
+interface Category
+  extends MdxNode<{
+    name: string
+  }> {}
+
+interface Post
+  extends MdxNode<{
+    title: string
+    excerpt?: string
+    category?: string[]
+  }> {
+  relationships?: {
+    category: Category[]
+  }
+}
+```
+
+You can then use `Post` as the return type for `getNode`, `getAllNodes`, `getMdxNode` and `getAllMdxNode`:
+
+```ts
+const post = await getMdxNode<Post>("post", context)
+
+const posts = await getAllNodes<Post>("post")
+```
 
 ## License
 
