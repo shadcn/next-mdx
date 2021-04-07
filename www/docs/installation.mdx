@@ -1,0 +1,79 @@
+---
+title: Installation
+excerpt: Install and configure MDX for Next.js
+---
+
+## Installation
+
+```sh
+npm i --save next-mdx
+# or
+yarn add next-mdx
+```
+
+## Configuration
+
+Create a `next-mdx.json` file at the root of your project with the following:
+
+```json
+{
+  "post": {
+    "contentPath": "content/posts",
+    "basePath": "/blog",
+    "sortBy": "date",
+    "sortOrder": "desc"
+  },
+  "category": {
+    "contentPath": "content/categories"
+  }
+}
+```
+
+1. `post`, `category` and `author` keys are unique IDs used as references for your MDX types.
+2. `contentPath` (required) is where your MDX files are located.
+3. `basePath` (optional) is the path used for generating URLs.
+4. `sortBy` (optional, defaults to `title`) is the name of the frontMatter field used for sorting.
+5. `sortOrder` (optional, defaults to `asc`) is the sorting order.
+
+## Example Page
+
+```jsx title=pages/blog/[...slug].tsx
+import { useHydrate } from "next-mdx/client"
+import { getMdxNode, getMdxPaths } from "next-mdx/server"
+
+export default function PostPage({ post }) {
+  const content = useHydrate(post)
+
+  return (
+    <article>
+      <h1>{post.frontMatter.title}</h1>
+      {post.frontMatter.excerpt ? <p>{post.frontMatter.excerpt}</p> : null}
+      <hr />
+      {content}
+    </article>
+  )
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: await getMdxPaths("post"),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context) {
+  const post = await getMdxNode("post", context)
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+```

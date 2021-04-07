@@ -1,0 +1,46 @@
+---
+title: TypeScript
+excerpt: next-mdx is written in TypeScript and has full types support.
+---
+
+Define your node types as follows:
+
+```ts
+interface Post extends MdxNode<FrontMatterFields> {}
+```
+
+### Example
+
+```ts
+import { MdxNode } from "next-mdx/server"
+
+interface Category
+  extends MdxNode<{
+    name: string
+  }> {}
+
+// or
+
+type Category = MdxNode<{
+  name: string
+}>
+
+interface Post
+  extends MdxNode<{
+    title: string
+    excerpt?: string
+    category?: string[]
+  }> {
+  relationships?: {
+    category: Category[]
+  }
+}
+```
+
+You can then use `Post` as the return type for `getNode`, `getAllNodes`, `getMdxNode` and `getAllMdxNode`:
+
+```ts
+const post = await getMdxNode<Post>("post", context)
+
+const posts = await getAllNodes<Post>("post")
+```

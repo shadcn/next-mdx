@@ -1,0 +1,43 @@
+---
+title: Relational Data
+excerpt: Reference and build relationships between MDX content.
+---
+
+When retrieving nodes with `getMdxNode` or `getAllMdxNodes`, `next-mdx` will automatically infer relational data from frontMatter keys.
+
+### Convention
+
+1. The frontMatter field name must be the same as the key defined in `next-mdx.json`
+2. The frontMatter field must be an array of values.
+
+### Example
+
+Given the following MDX files.
+
+```
+.
+└── content
+    ├── categories
+    │   └── category-a.mdx
+    │   └── category-b.mdx
+    └── posts:
+        └── example-post.mdx
+```
+
+In `example-post` you can reference related categories using the following:
+
+```md
+---
+title: Example Post
+category:
+  - category-a
+---
+```
+
+You can then access the categories as follows:
+
+```js
+const post = getNode("post", context)
+
+// post.relationships.category
+```

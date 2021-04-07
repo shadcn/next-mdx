@@ -1,0 +1,64 @@
+---
+title: Components
+excerpt: Use React components in your MDX files.
+---
+
+To use components inside MDX files, you need to pass the components to both `getMdxNode/getAllMdxNodes` and `useHydrate`.
+
+## Example
+
+```jsx title=pages/blog/[...slug].tsx
+import { useHydrate } from "next-mdx/client"
+import { getMdxNode, getMdxPaths } from "next-mdx/server"
+
+// highlight-start
+// A custom <Callout /> component.
+function Callout({ children, ...props }) {
+  return <div>{children}</div>
+}
+
+const mdxComponents = {
+  Callout,
+}
+// highlight-end
+
+export default function PostPage({ post }) {
+  const content = useHydrate(post, {
+    components: mdxComponents, // highlight-line
+  })
+
+  return (
+    <article>
+      <h1>{post.frontMatter.title}</h1>
+      {post.frontMatter.excerpt ? <p>{post.frontMatter.excerpt}</p> : null}
+      <hr />
+      {content}
+    </article>
+  )
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: await getMdxPaths("post"),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context) {
+  const post = await getMdxNode("post", context, {
+    components: mdxComponents, // highlight-line
+  })
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+```

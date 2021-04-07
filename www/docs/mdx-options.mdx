@@ -1,0 +1,36 @@
+---
+title: MDX Options
+---
+
+MDX options can be passed as `params` to both `getMdxNode(sourceName, context, params)` and `getAllMdxNodes(sourceName, params)` where `params` takes the shape of:
+
+```ts
+export interface MdxParams {
+  components?: MdxRemote.Components
+  scope?: Record<string, unknown>
+  provider?: MdxRemote.Provider
+  mdxOptions?: {
+    remarkPlugins?: Pluggable[]
+    rehypePlugins?: Pluggable[]
+    hastPlugins?: Pluggable[]
+    compilers?: Compiler[]
+    filepath?: string
+  }
+}
+```
+
+## Example
+
+```tsx
+export async function getStaticProps(context) {
+  const post = await getMdxNode("post", context, {
+    components: mdxComponents,
+    mdxOptions: {
+      remarkPlugins: [
+        require("remark-slug"),
+        require("remark-autolink-headings"),
+      ],
+    },
+  })
+}
+```

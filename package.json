@@ -5,7 +5,8 @@
     "packages/*",
     "starters/*",
     "examples/*",
-    "benchmarks"
+    "benchmarks",
+    "www"
   ],
   "scripts": {
     "dev": "lerna run dev --parallel",

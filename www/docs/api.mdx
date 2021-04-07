@@ -1,0 +1,209 @@
+---
+title: API Reference
+---
+
+`next-mdx` provides 6 main helper functions:
+
+- `getMdxPaths(sourceName: string)`
+- `getNode(sourceName, context)`
+- `getAllNodes(sourceName)`
+- `getMdxNode(sourceName, context, params)`
+- `getAllMdxNodes(sourceName, params)`
+- `useHydrate(node, params)`
+
+<Callout>
+
+**getAllNodes vs getAllMdxNodes**
+
+Use `getAllNodes` when you need nodes **without** the MDX content. It is backed by a cache and is really fast.
+
+This is handy when you need a list of nodes (example post teasers) and you're not using the MDX content.
+
+</Callout>
+
+## getMdxPaths
+
+`getMdxPaths(sourceName: string)` returns an array of path params which can be passed directly to `paths in `getStaticPaths`.
+
+- `sourceName` is the unique ID defined in `next-mdx.json`
+
+### Example
+
+```js
+// pages/blog/[...slug].js
+import { getMdxPaths } from "next-mdx/server"
+
+export async function getStaticPaths() {
+  return {
+    paths: await getMdxPaths("post"),
+    fallback: false,
+  }
+}
+```
+
+## getNode
+
+`getNode(sourceName, context)` returns an `MDXNode` with frontMatter and relational data but **without** MDX data. This is really fast and cached.
+
+Use this instead of `getMdxNode` if you are not rendering MDX content on a page.
+
+- `sourceName` is the unique ID defined in `next-mdx.json`
+- `context` is the context passed to `getStaticProps` or the slug as a string.
+
+### Example
+
+```js
+// pages/blog/[...slug].js
+import { getNode } from "next-mdx/server"
+
+export async function getStaticProps(context) {
+  const post = await getNode("post", context)
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+```
+
+## getAllNodes
+
+`getAllNodes(sourceName)` returns all `MdxNode` of the given type/source with frontMatter and relational data but **without** MDX data. This is also really fast and cached.
+
+- `sourceName` is the unique ID defined in `next-mdx.json`
+
+### Example
+
+```js
+import { getAllNodes } from "next-mdx/server"
+
+export async function getStaticProps() {
+  return {
+    props: {
+      posts: await getAllNodes("post"),
+    },
+  }
+}
+```
+
+## getMdxNode
+
+`getMdxNode(sourceName, context, params)` returns an `MDXNode`.
+
+- `sourceName` is the unique ID defined in `next-mdx.json`
+- `context` is the context passed to `getStaticProps` or the slug as a string.
+- `params`:
+
+```js
+{
+  components?: MdxRemote.Components
+  scope?: Record<string, unknown>
+  provider?: MdxRemote.Provider
+  mdxOptions?: {
+    remarkPlugins?: Pluggable[]
+    rehypePlugins?: Pluggable[]
+    hastPlugins?: Pluggable[]
+    compilers?: Compiler[]
+    filepath?: string
+  }
+}
+```
+
+### Example
+
+```js
+// pages/blog/[...slug].js
+import { getMdxNode } from "next-mdx/server"
+
+export async function getStaticProps(context) {
+  const post = await getMdxNode("post", context)
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+```
+
+## getAllMdxNodes
+
+`getAllMdxNodes(sourceName, params)` returns all `MdxNode` of the given type/source.
+
+- `sourceName` is the unique ID defined in `next-mdx.json`
+- `params`:
+
+```js
+{
+  components?: { name: React.Component },
+  scope?: {},
+  provider?: { component: React.Component, props: Record<string, unknown> },
+  mdxOptions: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+    hastPlugins: [],
+    compilers: [],
+  }
+}
+```
+
+### Example
+
+```js
+import { getAllMdxNodes } from "next-mdx/server"
+
+export async function getStaticProps() {
+  const posts = await getAllMdxNodes("post")
+
+  return {
+    props: {
+      posts: posts.filter((post) => post.frontMatter.featured),
+    },
+  }
+}
+```
+
+## useHydrate
+
+`useHydrate(node, params)` is used on the client side for hydrating static content.
+
+- `node` is the `MdxNode` object
+- `params`:
+
+```js
+{
+  components?: { name: React.Component },
+  provider?: { component: React.Component, props: Record<string, unknown> }
+}
+```
+
+### Example
+
+```jsx
+import { useHydrate } from "next-mdx/client"
+
+export default function PostPage({ post }) {
+  const content = useHydrate(post)
+
+  return (
+    <div>
+      <h1>{post.frontMatter.title}</h1>
+
+      {content}
+    </div>
+  )
+}
+```
