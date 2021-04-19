@@ -15,6 +15,10 @@ export const site: SiteConfig = {
       activePathNames: ["/[[...slug]]"],
     },
     {
+      title: "Guides",
+      url: "/guides",
+    },
+    {
       title: "GitHub",
       url: "https://github.com/arshad/next-mdx",
       external: true,

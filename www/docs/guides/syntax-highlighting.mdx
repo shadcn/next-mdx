@@ -1,0 +1,106 @@
+---
+title: Syntax Highlighting
+excerpt: Add syntax highlighting using Prism or highlight.js
+---
+
+## Prism
+
+To add syntax highlighting using [Prism](https://prismjs.com), we are going to use a rehype plugin.
+
+### Install dependencies
+
+```
+npm install @mapbox/rehype-prism prismjs
+```
+
+### Enable plugin in mdxOptions.
+
+Next, enable the `@mapbox/rehype-prism` plugin by passing it to `mdxOptions` in `getStaticProps`:
+
+```jsx title=pages/blog/[...slug].tsx
+...
+export async function getStaticProps(context) {
+  // highlight-start
+  const post = await getMdxNode("post", context, {
+    mdxOptions: {
+      rehypePlugins: [require("@mapbox/rehype-prism")],
+    },
+  })
+  // highlight-end
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+```
+
+### Import CSS.
+
+You can now import a Prism theme in `pages/blog/[...slug].tsx`:
+
+```jsx title=pages/blog/[...slug].tsx
+import { useHydrate } from "next-mdx/client"
+import { getMdxNode, getMdxPaths } from "next-mdx/server"
+import "prismjs/themes/prism-okaidia.css" // highlight-line
+```
+
+You can find more theme options [here](https://github.com/PrismJS/prism-themes).
+
+## Highlight.js
+
+To add syntax highlighting using [highlight.js](https://highlightjs.org), add the `rehype-highlight` rehype plugin.
+
+### Install dependencies
+
+```
+npm install rehype-highlight highlight.js
+```
+
+### Enable plugin in mdxOptions.
+
+Next, enable the `rehype-highlight` plugin by passing it to `mdxOptions` in `getStaticProps`:
+
+```jsx title=pages/blog/[...slug].tsx
+...
+export async function getStaticProps(context) {
+  // highlight-start
+  const post = await getMdxNode("post", context, {
+    mdxOptions: {
+      rehypePlugins: [require("rehype-highlight")],
+    },
+  })
+  // highlight-end
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+```
+
+### Import CSS.
+
+You can now import a highlight.js theme in `pages/blog/[...slug].tsx`:
+
+```jsx title=pages/blog/[...slug].tsx
+import { useHydrate } from "next-mdx/client"
+import { getMdxNode, getMdxPaths } from "next-mdx/server"
+import "highlight.js/styles/atom-one-dark.css" // highlight-line
+```
+
+You can find more theme options for highlight.js [here](https://github.com/highlightjs/highlight.js/tree/main/src/styles).

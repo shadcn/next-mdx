@@ -78,5 +78,14 @@ export const docs: DocsConfig = {
         },
       ],
     },
+    {
+      title: "Guides",
+      items: [
+        {
+          title: "Syntax Highlighting",
+          url: "/guides/syntax-highlighting",
+        },
+      ],
+    },
   ],
 }
