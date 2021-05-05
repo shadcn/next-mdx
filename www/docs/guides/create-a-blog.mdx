@@ -1,0 +1,133 @@
+---
+title: Create a blog with Next.js and MDX
+---
+
+## Create a new site
+
+Start by creating a new site using `create-next-app`.
+
+```sh
+npx create-next-app blog
+```
+
+Once this is completed, you should see the following file structure:
+
+```
+.
+├── pages
+│   ├── api
+│   │   └── hello.js
+│   ├── _app.js
+│   └── index.js
+├── public
+│   ├── favicon.ico
+│   └── vercel.svg
+├── styles
+│   ├── globals.css
+│   └── Home.module.css
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock
+```
+
+## Add next-mdx
+
+Let's add `next-mdx` to our project. From the root of your new site (`cd blog`), run the following command:
+
+```sh
+yarn add next-mdx
+```
+
+## Configure next-mdx
+
+For `next-mdx` to know where and how to fetch MDX content, we use a configuration file.
+
+Create a file named `next-mdx.json` at the root of your site and add the following:
+
+```json title=next-mdx.json
+{
+  "post": {
+    "contentPath": "content/posts",
+    "basePath": "/"
+  }
+}
+```
+
+What we're doing here is telling `next-mdx`:
+
+1. We have a `post` type.
+2. The MDX files are located under `content/posts`.
+3. Use `/` as the base path for generating URLs.
+
+<Callout>
+
+Hint: if you want to show blog posts under `/blog/title-of-post`, use `/blog` for the `basePath`.
+
+</Callout>
+
+## Create [...slug].jsx
+
+Let's create a page to display a blog post.
+
+Create a file named `[...slug].tsx` under the `pages` directory with the following content.
+
+```jsx title=pages/[...slug].tsx
+import { useHydrate } from "next-mdx/client"
+import { getMdxNode, getMdxPaths } from "next-mdx/server"
+
+export default function PostPage({ post }) {
+  const content = useHydrate(post) // highlight-line
+
+  return (
+    <article>
+      <h1>{post.frontMatter.title}</h1>
+      {post.frontMatter.excerpt ? <p>{post.frontMatter.excerpt}</p> : null}
+      <hr />
+      {content}
+    </article>
+  )
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: await getMdxPaths("post"), // highlight-line
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context) {
+  const post = await getMdxNode("post", context) // highlight-line
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+```
+
+This is all we need to fetch and render MDX content.
+
+## Add a blog post
+
+To add blog posts, create your MDX files under `content/posts`. Example: `content/posts/title-of-post`.
+
+```mdx title=content/posts/title-of-post.mdx
+---
+title: Title of Post
+excerpt: A sample blog with MDX content.
+---
+
+This is the blog content.
+```
+
+## View your post
+
+That's it. To view your new post, visit `http://localhost:3000/title-of-post`.
