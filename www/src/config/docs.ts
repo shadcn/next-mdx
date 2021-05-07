@@ -37,6 +37,27 @@ export const docs: DocsConfig = {
       ],
     },
     {
+      title: "Guides",
+      items: [
+        {
+          title: "All Guides",
+          url: "/guides",
+        },
+        {
+          title: "Create a blog",
+          url: "/guides/create-a-blog",
+        },
+        {
+          title: "Table of Contents",
+          url: "/plugins/next-mdx-toc",
+        },
+        {
+          title: "Syntax Highlighting",
+          url: "/guides/syntax-highlighting",
+        },
+      ],
+    },
+    {
       title: "Reference",
       items: [
         {
@@ -75,27 +96,6 @@ export const docs: DocsConfig = {
         {
           title: "next-mdx-toc",
           url: "/plugins/next-mdx-toc",
-        },
-      ],
-    },
-    {
-      title: "Guides",
-      items: [
-        {
-          title: "All Guides",
-          url: "/guides",
-        },
-        {
-          title: "Create a blog",
-          url: "/guides/create-a-blog",
-        },
-        {
-          title: "Table of Contents",
-          url: "/plugins/next-mdx-toc",
-        },
-        {
-          title: "Syntax Highlighting",
-          url: "/guides/syntax-highlighting",
         },
       ],
     },
