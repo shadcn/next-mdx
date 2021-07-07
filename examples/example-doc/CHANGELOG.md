@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/arshad/next-mdx/compare/example-doc@0.2.0...example-doc@0.2.1) (2021-07-07)
+
+
+### Bug Fixes
+
+* **example-doc:** typo ([0f32968](https://github.com/arshad/next-mdx/commit/0f3296880e57d512f767b4dd6670ebd45d6d51c6))
+* update example-doc ([2940ed3](https://github.com/arshad/next-mdx/commit/2940ed3e7f7f06144ff9223cb4c33ceab973936c))
+
+
+
+
+
 # [0.2.0](https://github.com/arshad/next-mdx/compare/example-doc@0.1.0...example-doc@0.2.0) (2021-03-29)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "next-mdx-toc",
   "description": "Add table of contents to MDX",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "sideEffects": false,
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "mdast-util-toc": "^5.1.0",
-    "next-mdx": "^0.6.0",
+    "next-mdx": "^0.6.1",
     "remark": "^13.0.0",
     "unist-util-visit": "^2.0.3"
   },
