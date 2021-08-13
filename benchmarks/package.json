@@ -12,7 +12,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "^10.0.9",
+    "next": "^11.1.0",
     "next-mdx": "^0.6.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
