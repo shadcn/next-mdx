@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/arshad/next-mdx/compare/example-page@0.1.3...example-page@0.1.4) (2021-09-21)
+
+**Note:** Version bump only for package example-page
+
+
+
+
+
 ## [0.1.3](https://github.com/arshad/next-mdx/compare/example-page@0.1.2...example-page@0.1.3) (2021-07-07)
 
 **Note:** Version bump only for package example-page
