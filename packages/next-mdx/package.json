@@ -27,12 +27,12 @@
     "client.d.ts"
   ],
   "bugs": {
-    "url": "https://github.com/arshad/next-mdx/issues"
+    "url": "https://github.com/shadcn/next-mdx/issues"
   },
-  "homepage": "https://github.com/arshad/next-mdx",
+  "homepage": "https://github.com/shadcn/next-mdx",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arshad/next-mdx.git"
+    "url": "https://github.com/shadcn/next-mdx.git"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",

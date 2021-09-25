@@ -4,10 +4,10 @@
 </div>
 
 <p align="center">
-  <a href="https://github.com/arshad/next-mdx/actions/workflows/ci.yml"><img src="https://github.com/arshad/next-mdx/actions/workflows/ci.yml/badge.svg" alt="Test"></a>
-  <a href="https://github.com/arshad/next-mdx/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@arshad/gatsby-theme-phoenix.svg" alt="License"></a>
-  <a href="https://github.com/arshad/next-mdx/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" /></a>
-  <a href="https://twitter.com/arshadcn"><img src="https://img.shields.io/badge/Follow-%40arshadcn-1da1f2" alt="Follow @arshadcn" /></a>
+  <a href="https://github.com/shadcn/next-mdx/actions/workflows/ci.yml"><img src="https://github.com/shadcn/next-mdx/actions/workflows/ci.yml/badge.svg" alt="Test"></a>
+  <a href="https://github.com/shadcn/next-mdx/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@shadcn/gatsby-theme-phoenix.svg" alt="License"></a>
+  <a href="https://github.com/shadcn/next-mdx/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" /></a>
+  <a href="https://twitter.com/shadcn"><img src="https://img.shields.io/badge/Follow-%40shadcn-1da1f2" alt="Follow @shadcn" /></a>
 </p>
 
 <p align="center">
@@ -24,8 +24,8 @@
 
 ## TLDR
 
-- 👉 Learn how to create a Next.js blog in 5 tweets: https://twitter.com/arshadcn/status/1367888421805383683
-- 🚀 What about build times? Is this fast? Yes: https://twitter.com/arshadcn/status/1372275646840279040
+- 👉 Learn how to create a Next.js blog in 5 tweets: https://twitter.com/shadcn/status/1367888421805383683
+- 🚀 What about build times? Is this fast? Yes: https://twitter.com/shadcn/status/1372275646840279040
 
 ## Table of Contents
 
@@ -87,9 +87,9 @@ Click to expand examples.
   import { useHydrate } from "next-mdx/client"
   import { getMdxNode, getMdxPaths } from "next-mdx/server"
 
-  export default function PostPage({ post }) {
-    const content = useHydrate(post)
-    
+export default function PostPage({ post }) {
+const content = useHydrate(post)
+
     return (
       <article>
         <h1 variant="heading.title">{post.frontMatter.title}</h1>
@@ -102,17 +102,18 @@ Click to expand examples.
         {content}
       </article>
     )
-  }
 
-  export async function getStaticPaths() {
-    return {
-      paths: await getMdxPaths("post"),
-      fallback: false,
-    }
-  }
+}
 
-  export async function getStaticProps(context) {
-    const post = await getMdxNode("post", context)
+export async function getStaticPaths() {
+return {
+paths: await getMdxPaths("post"),
+fallback: false,
+}
+}
+
+export async function getStaticProps(context) {
+const post = await getMdxNode("post", context)
 
     if (!post) {
       return {
@@ -125,16 +126,20 @@ Click to expand examples.
         post,
       },
     }
-  }
-  ```
+
+}
+
+```
 </details>
 
 
 ## Installation
 
 ```
+
 npm i --save next-mdx
-```
+
+````
 
 ## Configuration
 
@@ -152,7 +157,7 @@ Create a `next-mdx.json` file at the root of your project with the following:
     "contentPath": "content/categories"
   }
 }
-```
+````
 
 1. `post`, `category` and `author` keys are unique IDs used as references for your MDX types.
 2. `contentPath` (required) is where your MDX files are located.
@@ -511,4 +516,4 @@ const posts = await getAllNodes<Post>("post")
 
 ## License
 
-Licensed under the [MIT license](https://github.com/arshad/next-mdx/blob/master/LICENSE).
+Licensed under the [MIT license](https://github.com/shadcn/next-mdx/blob/master/LICENSE).

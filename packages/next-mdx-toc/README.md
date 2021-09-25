@@ -12,7 +12,6 @@ npm i --save next-mdx-toc remark-slug remark-autolink-headings
 
 1. Retrieve the MDX node using `getMdxNode`:
 
-
 ```js
 const doc = await getMdxNode("doc", context, {
   mdxOptions: {
@@ -37,9 +36,7 @@ import * as React from "react"
 import { getMdxNode } from "next-mdx/server"
 import { getTableOfContents } from "next-mdx-toc"
 
-export default function Page({ doc, tableOfContents}) {
-  
-}
+export default function Page({ doc, tableOfContents }) {}
 
 export async function getStaticProps(context) {
   const doc = await getMdxNode("doc", context, {
@@ -102,4 +99,4 @@ interface Doc extends MdxNode {
 
 ## License
 
-Licensed under the [MIT license](https://github.com/arshad/next-mdx/blob/master/LICENSE).
+Licensed under the [MIT license](https://github.com/shadcn/next-mdx/blob/master/LICENSE).

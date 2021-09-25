@@ -3,7 +3,7 @@ import { SiteConfig } from "@/core/types"
 export const site: SiteConfig = {
   name: "Next MDX",
   description: "Build MDX powered websites using Next.js",
-  copyright: `© ${new Date().getFullYear()} Next MDX - Project maintained by <a href="https://twitter.com/arshadcn">@arshadcn</a>.`,
+  copyright: `© ${new Date().getFullYear()} Next MDX - Project maintained by <a href="https://twitter.com/shadcn">@shadcn</a>.`,
   links: [
     {
       title: "Home",
@@ -20,12 +20,12 @@ export const site: SiteConfig = {
     },
     {
       title: "GitHub",
-      url: "https://github.com/arshad/next-mdx",
+      url: "https://github.com/shadcn/next-mdx",
       external: true,
     },
   ],
   social: {
-    github: "arshad/next-mdx",
-    twitter: "arshadcn",
+    github: "shadcn/next-mdx",
+    twitter: "shadcn",
   },
 }
