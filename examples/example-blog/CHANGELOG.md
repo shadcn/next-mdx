@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.5](https://github.com/arshad/next-mdx/compare/example-blog@0.5.4...example-blog@0.5.5) (2021-11-23)
+
+
+### Bug Fixes
+
+* rename repo links ([33fda7e](https://github.com/arshad/next-mdx/commit/33fda7e7f8f901c80dba871cb6c1ae7874796574))
+
+
+
+
+
 ## [0.5.4](https://github.com/shadcn/next-mdx/compare/example-blog@0.5.3...example-blog@0.5.4) (2021-09-21)
 
 **Note:** Version bump only for package example-blog

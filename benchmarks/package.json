@@ -1,7 +1,7 @@
 {
   "name": "next-mdx-benchmarks",
   "private": "true",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "next": "^11.1.1",
-    "next-mdx": "^0.6.1",
+    "next-mdx": "^0.6.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   },

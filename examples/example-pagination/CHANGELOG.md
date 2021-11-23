@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/arshad/next-mdx/compare/example-pagination@0.1.3...example-pagination@0.1.4) (2021-11-23)
+
+
+### Bug Fixes
+
+* rename repo links ([33fda7e](https://github.com/arshad/next-mdx/commit/33fda7e7f8f901c80dba871cb6c1ae7874796574))
+
+
+
+
+
 ## [0.1.3](https://github.com/shadcn/next-mdx/compare/example-pagination@0.1.2...example-pagination@0.1.3) (2021-09-21)
 
 **Note:** Version bump only for package example-pagination

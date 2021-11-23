@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/shadcn/next-mdx/compare/next-mdx@0.6.1...next-mdx@0.6.2) (2021-11-23)
+
+
+### Bug Fixes
+
+* rename repo links ([33fda7e](https://github.com/shadcn/next-mdx/commit/33fda7e7f8f901c80dba871cb6c1ae7874796574))
+* update license link ([d8c4ca1](https://github.com/shadcn/next-mdx/commit/d8c4ca13d30ed88fd6dada6b7e1d69d206e15607))
+
+
+
+
+
 ## [0.6.1](https://github.com/shadcn/next-mdx/compare/next-mdx@0.6.0...next-mdx@0.6.1) (2021-07-07)
 
 **Note:** Version bump only for package next-mdx
