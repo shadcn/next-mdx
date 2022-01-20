@@ -10,6 +10,7 @@ export function DocSearch({ ...props }) {
     if (window.docsearch) {
       try {
         window.docsearch({
+          appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
           apiKey: process.env.NEXT_PUBLIC_ALGOLIA_API_KEY,
           indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
           inputSelector: "#docsearch-input",
