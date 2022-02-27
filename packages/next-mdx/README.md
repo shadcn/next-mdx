@@ -1,3 +1,5 @@
+## ⚠️ This project has been retired. Consider using next-mdx-remote or mdx-bundler or nextra.
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/124599/109961945-0c061b00-7d04-11eb-9c19-17f33430b59f.jpg" />
   <h1>next-mdx</h1>
