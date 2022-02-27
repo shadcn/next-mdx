@@ -24,11 +24,6 @@
   <img src="https://user-images.githubusercontent.com/124599/110736366-f2edf480-8244-11eb-9b43-f27f6f578f4c.jpg" alt="next-mdx-relational-data" />
 </div>
 
-## TLDR
-
-- 👉 Learn how to create a Next.js blog in 5 tweets: https://twitter.com/shadcn/status/1367888421805383683
-- 🚀 What about build times? Is this fast? Yes: https://twitter.com/shadcn/status/1372275646840279040
-
 ## Table of Contents
 
 - [Demo](#demo)
